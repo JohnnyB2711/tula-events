@@ -1,13 +1,51 @@
-.Form{
-  width: 40%;
-}
-#my-input{
-  margin-top: 20px;
-}
-.Registration{
-  background: antiquewhite;
-  h3{
+.Registration {
+  display: flex;
+  flex-direction: column;
+
+  h3 {
     font-size: 24px;
-    text-align: center;
+    text-align: center !important;
+    margin-bottom: 40px;
+  }
+}
+.ButtonRegistration {
+  display: flex;
+  margin: auto;
+}
+.Header {
+  display: flex;
+  justify-content: space-between;
+  background: aquamarine;
+  padding: 0 !important;
+  margin: auto;
+
+  .HeaderLink {
+    display: inline-flex;
+    margin: auto 0;
+    justify-content: space-around;
+  }
+}
+.Carousel {
+  height: 250px;
+  background: royalblue;
+  padding: 0;
+
+  .Img1 {
+    background: url("") no-repeat;
+  }
+}
+.Scroll {
+  padding: 0 !important;
+}
+
+.SearchEvent {
+  display: flex;
+  flex-direction: column;
+  background: cornsilk;
+  margin: auto;
+  .SearchField{
+    display: inline-flex;
+    margin: auto;
+    justify-content: space-between;
   }
 }

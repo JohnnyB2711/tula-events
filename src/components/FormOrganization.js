@@ -1,7 +1,5 @@
 import React from "react";
-import {Form, Input, Select, Checkbox, Button, DatePicker, Radio} from 'antd';
-import moment from "moment";
-import bootstrap from 'bootstrap/dist/css/bootstrap.css'
+import {Form, Input, Select, Checkbox, Button} from 'antd';
 
 const {Option} = Select;
 
@@ -42,16 +40,6 @@ class RegistrationForm extends React.Component {
         callback();
     };
 
-    handleWebsiteChange = value => {
-        let autoCompleteResult;
-        if (!value) {
-            autoCompleteResult = [];
-        } else {
-            autoCompleteResult = ['.com', '.org', '.net'].map(domain => `${value}${domain}`);
-        }
-        this.setState({autoCompleteResult});
-    };
-
     render() {
         const {getFieldDecorator} = this.props.form;
 
@@ -85,12 +73,13 @@ class RegistrationForm extends React.Component {
                 <Option value="8">8</Option>
             </Select>,
         );
-        const config = {
-            rules: [{type: 'object', required: true, message: 'Please select time!'}],
-        };
-
         return (
                 <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+                    <Form.Item label="Название организации">
+                        {getFieldDecorator('nameOrganization', {
+                            rules: [{required: true, message: 'Please input your nickname!', whitespace: true}],
+                        })(<Input/>)}
+                    </Form.Item>
                     <Form.Item label="Имя">
                         {getFieldDecorator('name', {
                             rules: [{required: true, message: 'Please input your nickname!', whitespace: true}],
@@ -146,18 +135,6 @@ class RegistrationForm extends React.Component {
                             rules: [{required: true, message: 'Please input your phone number!'}],
                         })(<Input addonBefore={prefixSelector} style={{width: '100%'}}/>)}
                     </Form.Item>
-                    <Form.Item label="Дата рождения">
-                        {getFieldDecorator('date-picker', config)(<DatePicker
-                            defaultPickerValue={moment("1990-11-27", "YYYY-MM-DD")}/>)}
-                    </Form.Item>
-                    <Form.Item label="Пол">
-                        {getFieldDecorator('radio-group')(
-                            <Radio.Group>
-                                <Radio value="a">Мужской</Radio>
-                                <Radio value="b">Женский</Radio>
-                            </Radio.Group>,
-                        )}
-                    </Form.Item>
                     <Form.Item {...tailFormItemLayout}>
                         {getFieldDecorator('agreement', {
                             valuePropName: 'checked',
@@ -168,7 +145,7 @@ class RegistrationForm extends React.Component {
                         )}
                     </Form.Item>
                     <Form.Item {...tailFormItemLayout}>
-                        <Button type="primary" htmlType="submit" className='ButtonRegistration'>
+                        <Button type="primary" htmlType="submit" className='ButtonSubmit'>
                             Зарегистрироваться
                         </Button>
                     </Form.Item>
@@ -177,5 +154,5 @@ class RegistrationForm extends React.Component {
     }
 }
 
-const FormUser = Form.create({name: 'register'})(RegistrationForm);
-export default FormUser
+const FormOrganization = Form.create({name: 'register'})(RegistrationForm);
+export default FormOrganization

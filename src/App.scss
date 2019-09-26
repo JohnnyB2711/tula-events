@@ -1,0 +1,45 @@
+.Body {
+  margin: 0;
+  padding: 0 !important;
+  background: bisque;
+  height: 100%;
+  width: 100%;
+
+  .Registration {
+    margin: auto;
+
+    .Form {
+      margin: auto;
+    }
+  }
+}
+
+  .InLineBlock {
+    display: inline-flex;
+  }
+
+  .ColumnBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: auto;
+  }
+
+  .LoginConfirmation {
+    display: flex !important;
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+
+.MainPage {
+  padding: 0 !important;
+}
+
+.WrapForm {
+  background: white;
+  padding: 0 !important;
+  display: flex;
+  justify-content: center;
+}
+
