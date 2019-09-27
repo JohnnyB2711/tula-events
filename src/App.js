@@ -19,6 +19,7 @@ function App() {
                 <Route exact path='/' component={MainPage}/>
                 <Route path='/registration' component={Registration}/>
                 <Route path='/enter' component={Enter}/>
+                <Route path='/place' component={Enter}/>
                 <Route path='/newpassword' component={NewPassword}/>
                 <Route path='/passwordrecovery' component={PasswordRecovery}/>
             </Switch>

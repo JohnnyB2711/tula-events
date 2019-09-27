@@ -1,8 +1,11 @@
 import React from "react";
-import {Form, Input, Checkbox, Button} from 'antd';
-import UpLoadAvatar from "./UpLoadAvatar";
+import {Form, Input, Select, Checkbox, Button, DatePicker, Radio} from 'antd';
+import moment from "moment";
+import bootstrap from 'bootstrap/dist/css/bootstrap.css'
 
-class RegistrationForm extends React.Component {
+const {Option} = Select;
+
+class UserInfo extends React.Component {
     state = {
         confirmDirty: false,
         autoCompleteResult: [],
@@ -30,13 +33,14 @@ class RegistrationForm extends React.Component {
             callback();
         }
     };
-
-    validateToNextPassword = (rule, value, callback) => {
-        const {form} = this.props;
-        if (value && this.state.confirmDirty) {
-            form.validateFields(['confirm'], {force: true});
+    handleWebsiteChange = value => {
+        let autoCompleteResult;
+        if (!value) {
+            autoCompleteResult = [];
+        } else {
+            autoCompleteResult = ['.com', '.org', '.net'].map(domain => `${value}${domain}`);
         }
-        callback();
+        this.setState({autoCompleteResult});
     };
 
     render() {
@@ -65,16 +69,8 @@ class RegistrationForm extends React.Component {
             },
         };
         return (
-            <div className='FormRegistration container'>
-                <div className='Avatar'>
-                    <UpLoadAvatar/>
-                </div>
+            <div className='container'>
                 <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-                    <Form.Item label="Название организации">
-                        {getFieldDecorator('nameOrganization', {
-                            rules: [{required: true, message: 'Please input your nickname!', whitespace: true}],
-                        })(<Input className='InputRegistration'/>)}
-                    </Form.Item>
                     <Form.Item label="Имя">
                         {getFieldDecorator('name', {
                             rules: [{required: true, message: 'Please input your nickname!', whitespace: true}],
@@ -112,43 +108,25 @@ class RegistrationForm extends React.Component {
                             ],
                         })(<Input.Password className='InputRegistration'/>)}
                     </Form.Item>
-                    <Form.Item label="Повторный пароль" hasFeedback>
-                        {getFieldDecorator('confirm', {
-                            rules: [
-                                {
-                                    required: true,
-                                    message: 'Please confirm your password!',
-                                },
-                                {
-                                    validator: this.compareToFirstPassword,
-                                },
-                            ],
-                        })(<Input.Password onBlur={this.handleConfirmBlur} className='InputRegistration'/>)}
-                    </Form.Item>
                     <Form.Item label="Телефон">
                         {getFieldDecorator('phone', {
                             rules: [{required: true, message: 'Please input your phone number!'}],
                         })(<Input className='InputRegistration'/>)}
                     </Form.Item>
                     <Form.Item {...tailFormItemLayout}>
-                        {getFieldDecorator('agreement', {
-                            valuePropName: 'checked',
-                        })(
-                            <Checkbox>
-                                I have read the <a href="#hhh">agreement</a>
-                            </Checkbox>,
-                        )}
-                    </Form.Item>
-                    <Form.Item {...tailFormItemLayout}>
-                        <Button type="primary" htmlType="submit" className='ButtonSubmit'>
-                            Зарегистрироваться
+                        <Button type="primary" htmlType="submit" className='ButtonRegistration'>
+                            Сохранить изменения
+                        </Button>
+                        <Button type="primary" className='ButtonRegistration'>
+                            Изменить пароль
                         </Button>
                     </Form.Item>
                 </Form>
+
             </div>
         );
     }
 }
 
-const FormOrganization = Form.create({name: 'register'})(RegistrationForm);
-export default FormOrganization
+const SettingsUserInfo = Form.create({name: 'register'})(UserInfo);
+export default SettingsUserInfo

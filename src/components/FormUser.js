@@ -1,9 +1,7 @@
 import React from "react";
-import {Form, Input, Select, Checkbox, Button, DatePicker, Radio} from 'antd';
+import {Form, Input, Checkbox, Button, DatePicker, Radio} from 'antd';
 import moment from "moment";
-import bootstrap from 'bootstrap/dist/css/bootstrap.css'
-
-const {Option} = Select;
+import UpLoadAvatar from "./UpLoadAvatar";
 
 class RegistrationForm extends React.Component {
     state = {
@@ -77,19 +75,15 @@ class RegistrationForm extends React.Component {
                 },
             },
         };
-        const prefixSelector = getFieldDecorator('prefix', {
-            initialValue: '+7',
-        })(
-            <Select style={{width: 70}}>
-                <Option value="+7">+7</Option>
-                <Option value="8">8</Option>
-            </Select>,
-        );
         const config = {
             rules: [{type: 'object', required: true, message: 'Please select time!'}],
         };
 
         return (
+            <div className='FormRegistration container'>
+                <div className='Avatar'>
+                    <UpLoadAvatar/>
+                </div>
                 <Form {...formItemLayout} onSubmit={this.handleSubmit}>
                     <Form.Item label="Имя">
                         {getFieldDecorator('name', {
@@ -144,11 +138,11 @@ class RegistrationForm extends React.Component {
                     <Form.Item label="Телефон">
                         {getFieldDecorator('phone', {
                             rules: [{required: true, message: 'Please input your phone number!'}],
-                        })(<Input addonBefore={prefixSelector} className='InputRegistration'/>)}
+                        })(<Input className='InputRegistration'/>)}
                     </Form.Item>
                     <Form.Item label="Дата рождения">
                         {getFieldDecorator('date-picker', config)(<DatePicker className='InputRegistration'
-                            defaultPickerValue={moment("1990-11-27", "YYYY-MM-DD")}/>)}
+                                                                              defaultPickerValue={moment("1990-11-27", "YYYY-MM-DD")}/>)}
                     </Form.Item>
                     <Form.Item label="Пол">
                         {getFieldDecorator('radio-group')(
@@ -173,6 +167,7 @@ class RegistrationForm extends React.Component {
                         </Button>
                     </Form.Item>
                 </Form>
+            </div>
         );
     }
 }

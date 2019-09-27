@@ -1,5 +1,5 @@
 import React from "react";
-import {Card, Icon, Avatar, Button} from 'antd'
+import {Card, Button} from 'antd'
 class EventCard extends React.Component{
     render() {
         const { Meta } = Card;

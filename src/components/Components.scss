@@ -1,4 +1,14 @@
 //RegistrationForms
+.FormRegistration {
+  display: flex;
+  flex-direction: column;
+
+  .Avatar {
+    display: flex;
+    margin: auto;
+  }
+}
+
 h3 {
   font-size: 24px;
   text-align: center !important;
@@ -17,7 +27,6 @@ h3 {
 
 //Header
 .Header {
-  background: aquamarine;
   padding: 0 !important;
   margin: auto;
 
@@ -56,6 +65,7 @@ h3 {
 //Carousel
 .Scroll {
   padding: 0 !important;
+
   .Carousel {
     height: 250px;
     background: royalblue;
@@ -66,21 +76,47 @@ h3 {
     }
   }
 }
+
 //SearchBlock
 .SearchEvent {
   display: flex;
   flex-direction: column;
   background: cornsilk;
   margin: auto;
-
-  .SearchField {
-    display: inline-flex;
-    margin: auto;
-    justify-content: space-between;
-  }
 }
+
+.SearchField {
+  display: flex;
+  margin: auto;
+  justify-content: space-around;
+}
+
 //Menu Personal Area
-.MenuPA{
+.MenuPA {
   display: flex;
   justify-content: space-around;
+}
+
+//Scroll
+h2 {
+  color: white;
+  text-align: center;
+  font-size: 24px
+}
+//Адаптивность
+@media (max-width: 1023px){
+  //Поля для поиска
+  .SearchField {
+    flex-direction: column;
+    flex-flow: wrap;
+    .InputSearch{
+      width: 300px;
+    }
+  }
+}
+@media (max-width: 415px){
+  //Слайдер
+  .Carousel{
+    height: 200px!important;
+  }
 }

@@ -1,40 +1,54 @@
 import React from "react";
 import {withRouter} from 'react-router';
-import {Input, Button} from 'antd';
+import {PageHeader, Button, Row, Input} from 'antd';
+import BreadCrumb from './BreadCrumb'
+
+const routes = <BreadCrumb/>;
+const Content = ({children, extraContent}) => {
+    return (
+        <Row className="content" type="flex">
+            <div className="main" style={{flex: 1}}>
+                {children}
+            </div>
+            <div
+                className="extra"
+                style={{
+                    marginLeft: 80,
+                }}
+            >
+                {extraContent}
+            </div>
+        </Row>
+    );
+};
 
 class Header extends React.Component {
     render() {
         const {Search} = Input;
         return (
-            <header className="Header">
-                <div className="Header container">
-                    <div className='HeaderLink'>
-                        <a onClick={() => {
-                            this.props.history.push(`/`)
-                        }}>Главная</a>
-                        <a onClick={() => {
-                            this.props.history.push(`/`)
-                        }}>Мероприятия на карте</a>
-                    </div>
-                    <div className='HeaderTitle'>
-                        <h1>TулаАфиша</h1>
+            <header className="Header container-fluid">
+                <PageHeader
+                    title="Тула Афиша"
+                    extra={[
+                        <Button onClick={() => {
+                            this.props.history.push(`/enter`)
+                        }} key="3">Вход</Button>,
+                        <Button onClick={() => {
+                            this.props.history.push(`/registration`)
+                        }} key="2">Регистрация</Button>
+                    ]}
+                    avatar={{src: 'https://avatars1.githubusercontent.com/u/8186664?s=460&v=4'}}
+                    breadcrumb={{routes}}
+                >
+                    <Content>
+                        <BreadCrumb/>
                         <Search
-                            placeholder="input search text"
-                            size="small"
+                            placeholder="Поиск мероприятий"
+                            size="large"
                             onSearch={value => console.log(value)}
-                            style={{width: 200 , height:30}}
                         />
-                        <div className='HeaderButton'>
-                            <Button type="primary" onClick={() => {
-                                this.props.history.push(`/enter`)
-                            }}>Войти</Button>
-                            <Button type="primary" onClick={() => {
-                                this.props.history.push(`/registration`)
-                            }}>Регистрация</Button>
-                        </div>
-                    </div>
-
-                </div>
+                    </Content>
+                </PageHeader>
             </header>
         )
     }
