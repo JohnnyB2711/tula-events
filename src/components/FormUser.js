@@ -94,12 +94,12 @@ class RegistrationForm extends React.Component {
                     <Form.Item label="Имя">
                         {getFieldDecorator('name', {
                             rules: [{required: true, message: 'Please input your nickname!', whitespace: true}],
-                        })(<Input/>)}
+                        })(<Input className='InputRegistration'/>)}
                     </Form.Item>
                     <Form.Item label="Фамилия">
                         {getFieldDecorator('surname', {
                             rules: [{required: true, message: 'Please input your nickname!', whitespace: true}],
-                        })(<Input/>)}
+                        })(<Input className='InputRegistration'/>)}
                     </Form.Item>
                     <Form.Item label="Почта">
                         {getFieldDecorator('email', {
@@ -113,7 +113,7 @@ class RegistrationForm extends React.Component {
                                     message: 'Please input your E-mail!',
                                 },
                             ],
-                        })(<Input/>)}
+                        })(<Input className='InputRegistration'/>)}
                     </Form.Item>
                     <Form.Item label="Пароль" hasFeedback>
                         {getFieldDecorator('password', {
@@ -126,7 +126,7 @@ class RegistrationForm extends React.Component {
                                     validator: this.validateToNextPassword,
                                 },
                             ],
-                        })(<Input.Password/>)}
+                        })(<Input.Password className='InputRegistration'/>)}
                     </Form.Item>
                     <Form.Item label="Повторный пароль" hasFeedback>
                         {getFieldDecorator('confirm', {
@@ -139,15 +139,15 @@ class RegistrationForm extends React.Component {
                                     validator: this.compareToFirstPassword,
                                 },
                             ],
-                        })(<Input.Password onBlur={this.handleConfirmBlur}/>)}
+                        })(<Input.Password onBlur={this.handleConfirmBlur} className='InputRegistration'/>)}
                     </Form.Item>
                     <Form.Item label="Телефон">
                         {getFieldDecorator('phone', {
                             rules: [{required: true, message: 'Please input your phone number!'}],
-                        })(<Input addonBefore={prefixSelector} style={{width: '100%'}}/>)}
+                        })(<Input addonBefore={prefixSelector} className='InputRegistration'/>)}
                     </Form.Item>
                     <Form.Item label="Дата рождения">
-                        {getFieldDecorator('date-picker', config)(<DatePicker
+                        {getFieldDecorator('date-picker', config)(<DatePicker className='InputRegistration'
                             defaultPickerValue={moment("1990-11-27", "YYYY-MM-DD")}/>)}
                     </Form.Item>
                     <Form.Item label="Пол">

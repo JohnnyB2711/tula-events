@@ -1,3 +1,10 @@
+#root{
+  margin: 0;
+  padding: 0 !important;
+  background: bisque;
+  height: 100%;
+  width: 100%;
+}
 .Body {
   margin: 0;
   padding: 0 !important;
@@ -7,39 +14,47 @@
 
   .Registration {
     margin: auto;
+    background: white;
 
     .Form {
       margin: auto;
     }
   }
 }
+//MainPage
+.MainPage {
+  padding: 0 !important;
+}
 
-  .InLineBlock {
-    display: inline-flex;
-  }
+//EnterPage
+.WrapEnterForm {
+  background: white;
+  padding: 0 !important;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px !important;
 
-  .ColumnBlock {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin: auto;
+  .ButtonEnter {
+    width: auto;
+    margin: 0 auto;
   }
 
   .LoginConfirmation {
     display: flex !important;
     flex-direction: column !important;
     text-align: center;
+
+    .InLineBlock {
+      display: inline-flex;
+    }
+
+    .ColumnBlock {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      margin: auto;
+    }
   }
 
-
-.MainPage {
-  padding: 0 !important;
-}
-
-.WrapForm {
-  background: white;
-  padding: 0 !important;
-  display: flex;
-  justify-content: center;
 }
 

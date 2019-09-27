@@ -1,51 +1,86 @@
-.Registration {
-  display: flex;
-  flex-direction: column;
-
-  h3 {
-    font-size: 24px;
-    text-align: center !important;
-    margin-bottom: 40px;
-  }
+//RegistrationForms
+h3 {
+  font-size: 24px;
+  text-align: center !important;
+  margin-bottom: 40px !important;
 }
+
 .ButtonRegistration {
   display: flex;
   margin: auto;
+  width: auto;
 }
+
+.InputRegistration {
+  width: 300px !important;
+}
+
+//Header
 .Header {
-  display: flex;
-  justify-content: space-between;
   background: aquamarine;
   padding: 0 !important;
   margin: auto;
 
-  .HeaderLink {
-    display: inline-flex;
-    margin: auto 0;
-    justify-content: space-around;
+  .PageHeader {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0 !important;
   }
-}
-.Carousel {
-  height: 250px;
-  background: royalblue;
-  padding: 0;
 
-  .Img1 {
-    background: url("") no-repeat;
+  .HeaderButton {
+    display: flex;
+    margin: auto 0;
+  }
+
+  .HeaderTitle {
+    display: flex;
+    justify-content: space-between;
+
+    input {
+      width: auto;
+    }
+  }
+
+  .HeaderLink {
+    display: flex;
+    margin: auto 0;
+    justify-content: flex-start;
+
+    a {
+      margin-left: 20px;
+    }
   }
 }
+
+//Carousel
 .Scroll {
   padding: 0 !important;
-}
+  .Carousel {
+    height: 250px;
+    background: royalblue;
+    padding: 0;
 
+    .Img1 {
+      background: url("") no-repeat;
+    }
+  }
+}
+//SearchBlock
 .SearchEvent {
   display: flex;
   flex-direction: column;
   background: cornsilk;
   margin: auto;
-  .SearchField{
+
+  .SearchField {
     display: inline-flex;
     margin: auto;
     justify-content: space-between;
   }
+}
+//Menu Personal Area
+.MenuPA{
+  display: flex;
+  justify-content: space-around;
 }

@@ -14,7 +14,7 @@ class LoginForm extends React.Component {
     render() {
         const {getFieldDecorator} = this.props.form;
         return (
-            <div className='WrapForm container'>
+            <div className='WrapEnterForm container'>
                 <Form onSubmit={this.handleSubmit} className="col-6 login-form">
                     <Form.Item>
                         {getFieldDecorator('username', {
@@ -50,7 +50,7 @@ class LoginForm extends React.Component {
                                     Забыли пароль?
                                 </a>
                             </div>
-                            <Button type="primary" htmlType="submit" className="login-form-button">
+                            <Button type="primary" htmlType="submit" className="ButtonEnter login-form-button">
                                 Войти
                             </Button>
                             <a onClick={() => {
