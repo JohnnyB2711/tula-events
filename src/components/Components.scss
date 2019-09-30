@@ -1,28 +1,14 @@
 //RegistrationForms
-.FormRegistration {
-  display: flex;
-  flex-direction: column;
-
-  .Avatar {
-    display: flex;
-    margin: auto;
-  }
-}
-
 h3 {
   font-size: 24px;
   text-align: center !important;
-  margin-bottom: 40px !important;
 }
 
-.ButtonRegistration {
+.Button {
   display: flex;
   margin: auto;
   width: auto;
-}
-
-.InputRegistration {
-  width: 300px !important;
+  margin-bottom: 10px;
 }
 
 //Header
@@ -55,10 +41,6 @@ h3 {
     display: flex;
     margin: auto 0;
     justify-content: flex-start;
-
-    a {
-      margin-left: 20px;
-    }
   }
 }
 
@@ -95,6 +77,7 @@ h3 {
 .MenuPA {
   display: flex;
   justify-content: space-around;
+  margin-top: 30px
 }
 
 //Scroll
@@ -103,20 +86,11 @@ h2 {
   text-align: center;
   font-size: 24px
 }
-//Адаптивность
-@media (max-width: 1023px){
-  //Поля для поиска
-  .SearchField {
-    flex-direction: column;
-    flex-flow: wrap;
-    .InputSearch{
-      width: 300px;
-    }
-  }
+.EventCardList{
+  padding: 24px;
+  display: flex;
 }
-@media (max-width: 415px){
-  //Слайдер
-  .Carousel{
-    height: 200px!important;
-  }
+.ButtonEvent{
+  display: flex;
+  justify-content: space-around;
 }

@@ -1,33 +1,31 @@
 import React from "react";
 import {Menu, Icon} from 'antd'
+import {withRouter} from "react-router";
 
 class MenuUser extends React.Component {
     state = {
-        current: 'mail',
+        current: this.props.current,
     };
 
     handleClick = e => {
-        console.log('click ', e);
+        console.log(e.key)
         this.setState({
             current: e.key,
         });
     };
+
     render() {
         return (
             <Menu className='MenuPA' onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal">
-                <Menu.Item key="1">
-                    <Icon type="home"/>
-                    Главная
-                </Menu.Item>
-                <Menu.Item key="3">
-                    <Icon type="appstore"/>
-                    Прошедшие
-                </Menu.Item>
-                <Menu.Item key="4">
+                <Menu.Item key='plannedEvents' onClick={()=>{this.props.history.push('/personal_page/planned_events')}}>
                     <Icon type="clock-circle"/>
                     Запланированные
                 </Menu.Item>
-                <Menu.Item key="5">
+                <Menu.Item key='pastEvents' onClick={()=>{this.props.history.push('/personal_page/past_events')}}>
+                    <Icon type="appstore"/>
+                    Прошедшие
+                </Menu.Item>
+                <Menu.Item key='settings' onClick={()=>{this.props.history.push('/personal_page/settings')}} >
                     <Icon type="setting"/>
                     Настройки
                 </Menu.Item>
@@ -36,4 +34,4 @@ class MenuUser extends React.Component {
     }
 }
 
-export default MenuUser
+export default withRouter(MenuUser)

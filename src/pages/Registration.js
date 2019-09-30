@@ -1,7 +1,7 @@
 import React from "react";
 import {Tabs} from 'antd';
-import FormUser from '../components/FormUser'
-import FormOrganization from "../components/FormOrganization";
+import FormUser from '../components/Form/FormUser'
+import FormOrganization from "../components/Form/FormOrganization";
 
 const {TabPane} = Tabs;
 export default function Registration() {

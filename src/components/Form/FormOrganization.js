@@ -1,6 +1,6 @@
 import React from "react";
 import {Form, Input, Checkbox, Button} from 'antd';
-import UpLoadAvatar from "./UpLoadAvatar";
+import UpLoadAvatar from "../UpLoadAvatar";
 
 class RegistrationForm extends React.Component {
     state = {
@@ -65,7 +65,7 @@ class RegistrationForm extends React.Component {
             },
         };
         return (
-            <div className='FormRegistration container'>
+            <div className='WrapForm container col-12'>
                 <div className='Avatar'>
                     <UpLoadAvatar/>
                 </div>
@@ -73,17 +73,17 @@ class RegistrationForm extends React.Component {
                     <Form.Item label="Название организации">
                         {getFieldDecorator('nameOrganization', {
                             rules: [{required: true, message: 'Please input your nickname!', whitespace: true}],
-                        })(<Input className='InputRegistration'/>)}
+                        })(<Input className='Input'/>)}
                     </Form.Item>
                     <Form.Item label="Имя">
                         {getFieldDecorator('name', {
                             rules: [{required: true, message: 'Please input your nickname!', whitespace: true}],
-                        })(<Input className='InputRegistration'/>)}
+                        })(<Input className='Input'/>)}
                     </Form.Item>
                     <Form.Item label="Фамилия">
                         {getFieldDecorator('surname', {
                             rules: [{required: true, message: 'Please input your nickname!', whitespace: true}],
-                        })(<Input className='InputRegistration'/>)}
+                        })(<Input className='Input'/>)}
                     </Form.Item>
                     <Form.Item label="Почта">
                         {getFieldDecorator('email', {
@@ -97,7 +97,7 @@ class RegistrationForm extends React.Component {
                                     message: 'Please input your E-mail!',
                                 },
                             ],
-                        })(<Input className='InputRegistration'/>)}
+                        })(<Input className='Input'/>)}
                     </Form.Item>
                     <Form.Item label="Пароль" hasFeedback>
                         {getFieldDecorator('password', {
@@ -110,7 +110,7 @@ class RegistrationForm extends React.Component {
                                     validator: this.validateToNextPassword,
                                 },
                             ],
-                        })(<Input.Password className='InputRegistration'/>)}
+                        })(<Input.Password className='Input'/>)}
                     </Form.Item>
                     <Form.Item label="Повторный пароль" hasFeedback>
                         {getFieldDecorator('confirm', {
@@ -123,24 +123,24 @@ class RegistrationForm extends React.Component {
                                     validator: this.compareToFirstPassword,
                                 },
                             ],
-                        })(<Input.Password onBlur={this.handleConfirmBlur} className='InputRegistration'/>)}
+                        })(<Input.Password onBlur={this.handleConfirmBlur} className='Input'/>)}
                     </Form.Item>
                     <Form.Item label="Телефон">
                         {getFieldDecorator('phone', {
                             rules: [{required: true, message: 'Please input your phone number!'}],
-                        })(<Input className='InputRegistration'/>)}
+                        })(<Input className='Input'/>)}
                     </Form.Item>
                     <Form.Item {...tailFormItemLayout}>
                         {getFieldDecorator('agreement', {
                             valuePropName: 'checked',
                         })(
                             <Checkbox>
-                                I have read the <a href="#hhh">agreement</a>
+                                Я ознакомился с <a href="#hhh">соглашением</a>
                             </Checkbox>,
                         )}
                     </Form.Item>
                     <Form.Item {...tailFormItemLayout}>
-                        <Button type="primary" htmlType="submit" className='ButtonSubmit'>
+                        <Button type="primary" htmlType="submit" className='Button'>
                             Зарегистрироваться
                         </Button>
                     </Form.Item>
