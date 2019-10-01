@@ -11,7 +11,7 @@ class PersonalPage extends React.Component {
     }
 
     render() {
-        const status = 'org';
+        const status = 'user';
         return (
             <div className='container-fluid'>
                 <div className='container'>

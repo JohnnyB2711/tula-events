@@ -1,5 +1,6 @@
 import React from "react";
 import EventCard from "./EventCard";
+import TabCard from "./TabCard";
 
 class PastEvents extends React.Component {
     state = {
@@ -13,7 +14,7 @@ class PastEvents extends React.Component {
                     {
                         this.state.pastEvents.map((event) => {
                             return <div key={event} className='col-md-4 EventCardList'>
-                                <EventCard/>
+                                <TabCard/>
                             </div>
                         })
                     }

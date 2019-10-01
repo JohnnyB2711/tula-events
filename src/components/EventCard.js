@@ -4,7 +4,8 @@ import {withRouter} from "react-router";
 
 class EventCard extends React.Component {
     state = {
-        unFold: false
+        unFold: false,
+        status: 'user'
     }
     moreDetails = (e) => {
         e.preventDefault();
@@ -25,13 +26,14 @@ class EventCard extends React.Component {
                           src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
                       />
                   }
+                  extra={this.state.status == 'org' ? (<a href="#">Статистика</a>) : (null)}
                   actions={[
-                      <div className='ButtonEvent'>
-                          <Button>Пойду</Button>,
-                          <Button>Возможно</Button>,
-                          <Button>Не пойду</Button>
-                      </div>
-                  ]}
+                      this.state.status == 'user' ?
+                          (<div className='ButtonEvent'>
+                              <Button>Пойду</Button>,
+                              <Button>Возможно</Button>,
+                              <Button>Не пойду</Button>
+                          </div>) : (null)]}
             >
                 <Meta
                     title="Название"

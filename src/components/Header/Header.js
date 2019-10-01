@@ -25,7 +25,8 @@ const Content = ({children, extraContent}) => {
 
 class Header extends React.Component {
     state={
-        isHovered:true
+        isHovered:true,
+        authorized:false
     }
     showMenu=(e)=>{
         e.preventDefault();
@@ -35,14 +36,13 @@ class Header extends React.Component {
     }
     render() {
         const {Search} = Input;
-        const authorized = true;
         return (
             <header className="Header container-fluid">
                 <PageHeader
                     className='col-12'
                     title="Тула Афиша"
                     extra={[
-                        authorized == true ? (
+                        this.state.authorized == true ? (
                             <div>
                                 <MenuAvatar/>
                             </div>
