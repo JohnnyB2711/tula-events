@@ -1,6 +1,5 @@
 import React from "react";
 import MenuUser from "../components/Menu/MenuUser";
-import {Avatar} from 'antd'
 import MenuOrg from "../components/Menu/MenuOrg";
 
 class PersonalPage extends React.Component {
@@ -11,7 +10,7 @@ class PersonalPage extends React.Component {
     }
 
     render() {
-        const status = 'user';
+        const status = 'org';
         return (
             <div className='container-fluid'>
                 <div className='container'>

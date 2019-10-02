@@ -1,8 +1,7 @@
 import React from "react";
 import Scroll from '../components/Header/Scroll'
-import SearchEvent from '../components/SearchEvent'
-import EventCard from "../components/EventCard";
-import TabCard from "../components/TabCard";
+import SearchEvent from '../components/Filter/SearchEvent'
+import TabCard from "../components/CardEvent/TabCard";
 
 class MainPage extends React.Component {
     state = {
@@ -20,7 +19,7 @@ class MainPage extends React.Component {
                         {
                             this.state.mas.map((i) => {
                                 return <div key={this.state.mas[i]} className='col-md-4 EventCardList'>
-                                    <TabCard/>
+                                    <TabCard mainPage={true} user={'un'}/>
                                 </div>
                             })
                         }

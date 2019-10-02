@@ -8,7 +8,6 @@ class MenuOrg extends React.Component {
     };
 
     handleClick = e => {
-        console.log(e.key)
         this.setState({
             current: e.key,
         });
@@ -18,11 +17,7 @@ class MenuOrg extends React.Component {
             <Menu className='MenuPA' onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal">
                 <Menu.Item key="plannedEvents" onClick={()=>{this.props.history.push('/personal_page/planned_events')}}>
                     <Icon type="clock-circle"/>
-                    Запланированные
-                </Menu.Item>
-                <Menu.Item key="pastEvents" onClick={()=>{this.props.history.push('/personal_page/past_events')}}>
-                    <Icon type="appstore"/>
-                    Прошедшие
+                    Мероприятия
                 </Menu.Item>
                 <Menu.Item key="newEvent" onClick={()=>{this.props.history.push('/personal_page/create_event')}}>
                     <Icon type="file-add"/>

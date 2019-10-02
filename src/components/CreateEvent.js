@@ -1,5 +1,5 @@
 import React from "react";
-import ChoiceDate from '././ChoiceDate'
+import ChoiceDate from './Filter/ChoiceDate'
 import {Form, Input, Button, Cascader, Radio} from 'antd';
 import UpLoadAvatar from "../components/UpLoadAvatar";
 

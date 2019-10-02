@@ -22,10 +22,11 @@ import MoreAboutEvent from "./components/MoreAboutEvent";
 function App() {
     return (
         <div className="Body container-fluid">
-            <Header/>
+            <Header user={'user'}/>
             <Route path='/personal_page' component={PersonalPage}/>
+            <Route exact path='/' component={MainPage}/>
             <Switch>
-                <Route exact path='/' component={MainPage}/>
+
                 <Route path='/map' component={EventsOnMap}/>
 
 

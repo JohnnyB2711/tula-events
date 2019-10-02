@@ -67,8 +67,10 @@ class AddComment extends React.Component {
 
     render() {
         const { comments, submitting, value } = this.state;
-
         return (
+            this.props.mainPage === true ? null :
+                this.props.user === 'user' ?
+                (
             <div>
                 {comments.length > 0 && <CommentList comments={comments} />}
                 <Comment
@@ -87,7 +89,7 @@ class AddComment extends React.Component {
                         />
                     }
                 />
-            </div>
+            </div>) : null
         );
     }
 }

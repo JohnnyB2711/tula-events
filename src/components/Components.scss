@@ -90,7 +90,13 @@ h2 {
   padding: 24px;
   display: flex;
 }
-.ButtonEvent{
+//Кнопки в CardEvent
+.ButtonsWrap{
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  .ButtonsEvent{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
 }

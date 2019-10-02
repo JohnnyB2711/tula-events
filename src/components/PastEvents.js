@@ -1,6 +1,5 @@
 import React from "react";
-import EventCard from "./EventCard";
-import TabCard from "./TabCard";
+import TabCard from "./CardEvent/TabCard";
 
 class PastEvents extends React.Component {
     state = {

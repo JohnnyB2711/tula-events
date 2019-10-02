@@ -54,6 +54,11 @@ class LoginForm extends React.Component {
                                 }}>
                                     Забыли пароль?
                                 </a>
+                                <a className="Href login-form-forgot" onClick={() => {
+                                    this.props.history.push(`/registration`)
+                                }}>
+                                    Зарегистрировать
+                                </a>
                             </div>
                             <Button
                                 type="primary"

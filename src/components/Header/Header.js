@@ -1,8 +1,8 @@
 import React from "react";
 import {withRouter} from 'react-router';
-import {PageHeader, Button, Row, Input, Avatar} from 'antd';
+import {PageHeader, Button, Row, Input} from 'antd';
 import BreadCrumb from './BreadCrumb'
-import MenuAvatar from "../Menu/MenuAvatar";
+import MenuAvatar from "./MenuAvatar";
 
 const routes = <BreadCrumb/>;
 const Content = ({children, extraContent}) => {
@@ -42,7 +42,7 @@ class Header extends React.Component {
                     className='col-12'
                     title="Тула Афиша"
                     extra={[
-                        this.state.authorized == true ? (
+                        this.props.user !== 'un' ? (
                             <div>
                                 <MenuAvatar/>
                             </div>

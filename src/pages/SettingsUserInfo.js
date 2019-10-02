@@ -18,7 +18,6 @@ class UserInfo extends React.Component {
     };
 
     render() {
-        const status = 'user';
         const {getFieldDecorator} = this.props.form;
 
         const formItemLayout = {
