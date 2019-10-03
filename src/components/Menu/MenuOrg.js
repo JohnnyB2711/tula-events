@@ -6,6 +6,11 @@ class MenuOrg extends React.Component {
     state = {
         current: this.props.current,
     };
+    componentDidMount() {
+        this.setState({
+            current: this.props.current,
+        });
+    }
 
     handleClick = e => {
         this.setState({
@@ -14,16 +19,16 @@ class MenuOrg extends React.Component {
     };
     render() {
         return (
-            <Menu className='MenuPA' onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal">
-                <Menu.Item key="plannedEvents" onClick={()=>{this.props.history.push('/personal_page/planned_events')}}>
+            <Menu className='MenuPA' onClick={this.handleClick} selectedKeys={[this.state.current]} mode={this.props.mode}>
+                <Menu.Item key="plannedEvents" onClick={()=>{this.props.history.push(`/events/:${this.state.current}`)}}>
                     <Icon type="clock-circle"/>
                     Мероприятия
                 </Menu.Item>
-                <Menu.Item key="newEvent" onClick={()=>{this.props.history.push('/personal_page/create_event')}}>
+                <Menu.Item key="newEvent" onClick={()=>{this.props.history.push('/create_event')}}>
                     <Icon type="file-add"/>
                     Создать
                 </Menu.Item>
-                <Menu.Item key="settings" onClick={()=>{this.props.history.push('/personal_page/settings')}}>
+                <Menu.Item key="settings" onClick={()=>{this.props.history.push('/settings')}}>
                     <Icon type="setting"/>
                     Настройки
                 </Menu.Item>

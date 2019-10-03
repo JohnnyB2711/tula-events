@@ -1,6 +1,7 @@
 import React from "react";
 import {Form, Input, Button} from 'antd';
 import UpLoadAvatar from "../components/UpLoadAvatar";
+import MenuOrg from "../components/Menu/MenuOrg";
 
 class UserInfo extends React.Component {
     state = {
@@ -32,6 +33,7 @@ class UserInfo extends React.Component {
         };
         return (
             <div className='container col-12 WrapForm'>
+                <MenuOrg mode='horizontal'/>
                 <div className='Avatar'>
                     <UpLoadAvatar/>
                 </div>

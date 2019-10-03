@@ -5,7 +5,7 @@ import TabCard from "../components/CardEvent/TabCard";
 
 class MainPage extends React.Component {
     state = {
-        mas: ["1", "2", "3","1", "2", "3"]
+        mas: ["1", "2", "3", "1", "2", "3"]
     }
 
     render() {
@@ -14,7 +14,6 @@ class MainPage extends React.Component {
                 <div className="MainPage container-fluid">
                     <Scroll/>
                     <SearchEvent/>
-
                     <div className='row'>
                         {
                             this.state.mas.map((i) => {

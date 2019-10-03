@@ -13,8 +13,7 @@ import Header from "./components/Header/Header";
 import MainPage from "./pages/MainPage";
 import EventsOnMap from "./pages/EventsOnMap";
 import PersonalPage from "./pages/PersonalPage";
-import PastEvents from "./components/PastEvents";
-import PlannedEvents from "./components/PlannedEvents";
+import UserEvents from "./components/UserEvents";
 import SettingsUserInfo from "./pages/SettingsUserInfo";
 import CreateEvent from "./components/CreateEvent";
 import MoreAboutEvent from "./components/MoreAboutEvent";
@@ -24,16 +23,14 @@ function App() {
         <div className="Body container-fluid">
             <Header user={'user'}/>
             <Route path='/personal_page' component={PersonalPage}/>
-            <Route exact path='/' component={MainPage}/>
             <Switch>
-
+                <Route exact path='/' component={MainPage}/>
                 <Route path='/map' component={EventsOnMap}/>
 
 
-                <Route path='/personal_page/past_events' component={PastEvents}/>
-                <Route path='/personal_page/planned_events' component={PlannedEvents}/>
-                <Route path='/personal_page/settings' component={SettingsUserInfo}/>
-                <Route path='/personal_page/create_event' component={CreateEvent}/>
+                <Route path='/events/:current' component={UserEvents}/>
+                <Route path='/settings' component={SettingsUserInfo}/>
+                <Route path='/create_event' component={CreateEvent}/>
 
                 <Route path='/about_event' component={MoreAboutEvent}/>
                 <Route path='/registration' component={Registration}/>

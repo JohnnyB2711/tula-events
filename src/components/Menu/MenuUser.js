@@ -17,7 +17,7 @@ class MenuUser extends React.Component {
     render() {
         return (
             <Menu className='MenuPA' onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal">
-                <Menu.Item key='plannedEvents' onClick={()=>{this.props.history.push('/personal_page/planned_events')}}>
+                <Menu.Item key='plannedEvents' onClick={()=>{this.props.history.push('/events')}}>
                     <Icon type="clock-circle"/>
                     Мероприятия
                 </Menu.Item>

@@ -2,6 +2,7 @@ import React from "react";
 import ChoiceDate from './Filter/ChoiceDate'
 import {Form, Input, Button, Cascader, Radio} from 'antd';
 import UpLoadAvatar from "../components/UpLoadAvatar";
+import MenuOrg from "./Menu/MenuOrg";
 
 class NewEvent extends React.Component {
     state = {
@@ -39,6 +40,7 @@ class NewEvent extends React.Component {
         };
         return (
             <div className='container col-12 WrapForm'>
+                <MenuOrg mode='horizontal'/>
                 <div className='Avatar'>
                     <UpLoadAvatar/>
                 </div>
