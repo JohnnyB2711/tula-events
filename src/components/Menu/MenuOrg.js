@@ -20,15 +20,22 @@ class MenuOrg extends React.Component {
     render() {
         return (
             <Menu className='MenuPA' onClick={this.handleClick} selectedKeys={[this.state.current]} mode={this.props.mode}>
-                <Menu.Item key="plannedEvents" onClick={(e)=>{this.props.history.push(`/events/:${e.key}`)}}>
+
+                <Menu.Item key="userEvents" onClick={(e)=>{
+                    console.log(e.key)
+                    this.props.history.push(`/personal_page/events/:${e.key}`)}}>
                     <Icon type="clock-circle"/>
                     Мероприятия
                 </Menu.Item>
-                <Menu.Item key="newEvent" onClick={()=>{this.props.history.push('/create_event')}}>
+                <Menu.Item key="newEvent" onClick={(e)=>{
+                    console.log(e.key)
+                    this.props.history.push(`/personal_page/create_event/:${e.key}`)}}>
                     <Icon type="file-add"/>
                     Создать
                 </Menu.Item>
-                <Menu.Item key="settings" onClick={()=>{this.props.history.push('/settings')}}>
+                <Menu.Item key="settings" onClick={(e)=>{
+                    console.log(e.key)
+                    this.props.history.push(`/personal_page/settings/:${e.key}`)}}>
                     <Icon type="setting"/>
                     Настройки
                 </Menu.Item>

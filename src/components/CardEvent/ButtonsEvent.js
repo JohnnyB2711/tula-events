@@ -12,7 +12,7 @@ class ButtonsEvent extends React.Component {
                         <Button disabled={this.props.user !== 'user'}>Возможно</Button>
                         <Button disabled={this.props.user !== 'user'}>Не пойду</Button>
                     </div>
-                    {this.props.user === 'user' ? null : <div>Необходимо<a className='Href' onClick={() => {this.props.history.push(`/enter`)}}>авторизироваться</a></div>}
+                    {this.props.user === 'user' ? null : <div className='Warning'>Чтобы подтвердить свое учатие,необходимо<a className='Href' onClick={() => {this.props.history.push(`/enter`)}}>авторизоваться</a></div>}
                 </div>
         )
     }

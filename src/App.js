@@ -16,23 +16,25 @@ import PersonalPage from "./pages/PersonalPage";
 import UserEvents from "./components/UserEvents";
 import SettingsUserInfo from "./pages/SettingsUserInfo";
 import CreateEvent from "./components/CreateEvent";
-import MoreAboutEvent from "./components/MoreAboutEvent";
+import DetailCard from "./components/CardEvent/DetailCard";
+import Footer from "./components/Footer/Footer";
 
 function App() {
     return (
         <div className="Body container-fluid">
             <Header user={'user'}/>
-            <Route path='/personal_page' component={PersonalPage}/>
+            <Route path='/personal_page' render={(props)=><PersonalPage user='org' {...props}/>}/>
+            <Route exact path='/' render={(props)=><MainPage user='org' {...props}/>}/>
             <Switch>
-                <Route exact path='/' component={MainPage}/>
+
                 <Route path='/map' component={EventsOnMap}/>
+                <Route path='/event/:info' render={(props)=><DetailCard user='org' mainPage={false} {...props}/>}/>
 
+                <Route path='/personal_page/events/:current' component={UserEvents}/>
+                <Route path='/personal_page/settings/:current' component={SettingsUserInfo}/>
+                <Route path='/personal_page/create_event/:current' component={CreateEvent}/>
 
-                <Route path='/events/:current' component={UserEvents}/>
-                <Route path='/settings' component={SettingsUserInfo}/>
-                <Route path='/create_event' component={CreateEvent}/>
-
-                <Route path='/about_event' component={MoreAboutEvent}/>
+                <Route path='/about_event' component={DetailCard}/>
                 <Route path='/registration' component={Registration}/>
                 <Route path='/enter' component={Enter}/>
                 <Route path='/newpassword' component={NewPassword}/>
@@ -40,6 +42,7 @@ function App() {
 
 
             </Switch>
+            <Footer/>
         </div>
     );
 }

@@ -1,24 +1,32 @@
 import React from "react";
-import {Checkbox} from "antd";
+import {Checkbox, Collapse} from "antd";
 import TabCard from "./CardEvent/TabCard";
 import MenuOrg from "./Menu/MenuOrg";
-class UserEvents extends React.Component{
+import MenuUser from "./Menu/MenuUser";
+
+class UserEvents extends React.Component {
     state = {
         plannedEvents: ['1', '2', '3', '4', '1', '2', '3', '4', '1', '2', '3', '4'],
-        planned:true
+        planned: true
     };
-    onChange=(e)=> {
+    onChange = (e) => {
         e.preventDefault();
         this.setState({
-            planned:!this.state.planned
+            planned: !this.state.planned
         })
-    }
+    };
     render() {
-        return(
+        const {Panel} = Collapse;
+        return (
             <div className='container-fluid'>
-                <MenuOrg mode='horizontal' current={this.props.current}/>
                 <h3>{this.state.planned === true ? 'Запланированные' : 'Прошедшие'}</h3>
-                <Checkbox onChange={(e)=>{this.onChange(e)}}>Прошедшие</Checkbox>
+                <Collapse>
+                    <Panel header="Фильтры">
+                        <Checkbox onChange={(e) => {
+                            this.onChange(e)
+                        }}>Прошедшие</Checkbox>
+                    </Panel>
+                </Collapse>
 
                 <div className='row'>
                     {
@@ -34,4 +42,5 @@ class UserEvents extends React.Component{
     }
 
 }
+
 export default UserEvents

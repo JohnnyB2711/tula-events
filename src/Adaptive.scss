@@ -4,7 +4,7 @@
     flex-direction: column;
     flex-flow: wrap;
     .InputSearch{
-      width: 300px;
+      width: 300px!important;
     }
   }
 }
@@ -30,6 +30,16 @@
   }
   .EventCardList{
     justify-content: center;
+  }
+  .Footer{
+    height: 100px!important;
+  }
+  .DetailCard{
+    .CardImage{
+      width: 100% !important;
+      margin:0!important;
+    }
+
   }
 
 }

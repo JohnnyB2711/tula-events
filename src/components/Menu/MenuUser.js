@@ -16,12 +16,16 @@ class MenuUser extends React.Component {
 
     render() {
         return (
-            <Menu className='MenuPA' onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal">
-                <Menu.Item key='plannedEvents' onClick={()=>{this.props.history.push('/events')}}>
+            <Menu className='MenuPA' onClick={this.handleClick} selectedKeys={[this.state.current]} mode={this.props.mode}>
+                <Menu.Item key='plannedEvents' onClick={(e)=>{
+                    console.log(e.key)
+                    this.props.history.push(`/personal_page/events/:current:${e.key}`)}}>
                     <Icon type="clock-circle"/>
                     Мероприятия
                 </Menu.Item>
-                <Menu.Item key='settings' onClick={()=>{this.props.history.push('/personal_page/settings')}} >
+                <Menu.Item key='settings'onClick={(e)=>{
+                    console.log(e.key)
+                    this.props.history.push(`/personal_page/settings/:${e.key}`)}}>
                     <Icon type="setting"/>
                     Настройки
                 </Menu.Item>

@@ -1,8 +1,9 @@
 import React from "react";
 import {withRouter} from 'react-router';
-import {PageHeader, Button, Row, Input} from 'antd';
+import {PageHeader, Row, Input} from 'antd';
 import BreadCrumb from './BreadCrumb'
-import MenuAvatar from "./MenuAvatar";
+import Log from './Log'
+import {Link} from "react-router-dom";
 
 const routes = <BreadCrumb/>;
 const Content = ({children, extraContent}) => {
@@ -24,15 +25,9 @@ const Content = ({children, extraContent}) => {
 };
 
 class Header extends React.Component {
-    state={
-        isHovered:true,
-        authorized:false
-    }
-    showMenu=(e)=>{
-        e.preventDefault();
-        return(
-            <MenuAvatar/>
-        )
+    state = {
+        isHovered: true,
+        authorized: false
     }
     render() {
         const {Search} = Input;
@@ -40,32 +35,28 @@ class Header extends React.Component {
             <header className="Header container-fluid">
                 <PageHeader
                     className='col-12'
-                    title="Тула Афиша"
+                    title={<Link to={`/`}>Тула Афиша</Link>}
                     extra={[
-                        this.props.user !== 'un' ? (
-                            <div>
-                                <MenuAvatar/>
-                            </div>
-                            ) :
-                            (<div className='ButtonHeader'>
-                                <Button onClick={() => {
-                                    this.props.history.push(`/enter`)
-                                }} key="5">Вход</Button>
-                                <Button onClick={() => {
-                                    this.props.history.push(`/registration`)
-                                }} key="6">Регистрация</Button>
-                            </div>)
+                        <div className='HeaderSearch'>
+                            <Search
+                                className='SearchInput'
+                                placeholder="Поиск мероприятия"
+                                size="large"
+                                onSearch={value => console.log(value)}
+                            />
+                            <Log user={this.props.user}/>
+                        </div>
                     ]}
-                    avatar={{src: 'https://avatars1.githubusercontent.com/u/8186664?s=460&v=4'}}
+
+                avatar={
+                    <Link to={`/`}>
+                        <div>g</div>
+                    </Link>}
                     breadcrumb={{routes}}
                 >
                     <Content>
                         <BreadCrumb/>
-                        <Search
-                            placeholder="Поиск мероприятий"
-                            size="large"
-                            onSearch={value => console.log(value)}
-                        />
+
                     </Content>
                 </PageHeader>
             </header>

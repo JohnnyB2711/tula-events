@@ -1,5 +1,7 @@
 import React from "react";
-import {Form, Row, Col, Input, Button, DatePicker, Cascader, Radio, Collapse} from 'antd';
+import {Form, Row, Col, Input, Button, DatePicker, Cascader, Checkbox, Collapse} from 'antd';
+import ChoiceTimeInterval from "../ChoiceTimeInterval";
+import ChoiceDate from "./ChoiceDate";
 
 class Search extends React.Component {
     state = {
@@ -42,7 +44,7 @@ class Search extends React.Component {
                                 ]
                             })(<Cascader
                                 fieldNames={{label: 'label', value: 'value'}}
-                                className='InputSearch'
+                                className='InputSearch Cascader'
                                 options={options}
                                 placeholder="Жанр мероприятия"/>,)}
                         </Form.Item>
@@ -54,7 +56,7 @@ class Search extends React.Component {
                                         message: 'Input something!',
                                     },
                                 ],
-                            })(<DatePicker className='InputSearch' placeholder='Выберите дату'/>)}
+                            })(<ChoiceTimeInterval/>)}
                         </Form.Item>
                         <Form.Item>
                             {getFieldDecorator(`place`, {
@@ -74,7 +76,7 @@ class Search extends React.Component {
                                         message: 'Заполните поля для фильтра!',
                                     },
                                 ],
-                            })(<Radio>Рядом со мной</Radio>)}
+                            })(<Checkbox>Рядом со мной</Checkbox>)}
                         </Form.Item>
                         <Row>
                             <Col span={24} style={{textAlign: 'right'}}>

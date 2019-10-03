@@ -1,7 +1,6 @@
 import React from "react";
 import {Form, Input, Button} from 'antd';
 import UpLoadAvatar from "../components/UpLoadAvatar";
-import MenuOrg from "../components/Menu/MenuOrg";
 
 class UserInfo extends React.Component {
     state = {
@@ -32,8 +31,7 @@ class UserInfo extends React.Component {
             },
         };
         return (
-            <div className='container col-12 WrapForm'>
-                <MenuOrg mode='horizontal'/>
+            <div className='container-fluid WrapForm'>
                 <div className='Avatar'>
                     <UpLoadAvatar/>
                 </div>
@@ -82,7 +80,7 @@ class UserInfo extends React.Component {
                     </Form.Item>
 
                     <Button type="primary" className='Button'>
-                        Изменить пароль
+                        Подтверждение пароля
                     </Button>
                     <Button type="primary" htmlType="submit" className='Button'>
                         Сохранить изменения

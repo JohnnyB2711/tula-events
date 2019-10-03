@@ -1,3 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+}
+
+a{
+  color: black!important;
+}
 .container-fluid {
   padding: 0 !important;
 }
@@ -62,7 +74,6 @@
 .Card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 
 }
 .ant-card-body{
@@ -74,15 +85,10 @@
   flex-direction: column;
 }
 
-.DetailsAboutEvent {
-
-}
-
 //Form
 .WrapForm {
   display: flex;
   flex-direction: column;
-  padding: 24px !important;
 
   .Input {
     width: 60%;

@@ -1,6 +1,6 @@
 import React from "react";
-import ChoiceDate from './Filter/ChoiceDate'
-import {Form, Input, Button, Cascader, Radio} from 'antd';
+import ChoiceTimeInterval from './ChoiceTimeInterval'
+import {Form, Input, Button, Cascader,Checkbox} from 'antd';
 import UpLoadAvatar from "../components/UpLoadAvatar";
 import MenuOrg from "./Menu/MenuOrg";
 
@@ -39,8 +39,7 @@ class NewEvent extends React.Component {
             },
         };
         return (
-            <div className='container col-12 WrapForm'>
-                <MenuOrg mode='horizontal'/>
+            <div className='container-fluid WrapForm'>
                 <div className='Avatar'>
                     <UpLoadAvatar/>
                 </div>
@@ -87,7 +86,7 @@ class NewEvent extends React.Component {
                                     message: 'Input something!',
                                 },
                             ],
-                        })(<ChoiceDate/>)}
+                        })(<ChoiceTimeInterval/>)}
                     </Form.Item>
 
                     <Form.Item>
@@ -108,7 +107,7 @@ class NewEvent extends React.Component {
                                     message: 'Заполните поля для фильтра!',
                                 },
                             ],
-                        })(<Radio>Только авторизированным пользователям</Radio>)}
+                        })(<Checkbox>Только авторизированным пользователям</Checkbox>)}
                     </Form.Item>
 
                     <Button type="primary" htmlType="submit" className='Button'>

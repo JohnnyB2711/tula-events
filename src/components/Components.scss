@@ -13,8 +13,26 @@ h3 {
 
 //Header
 .Header {
+  color: black!important;
   padding: 0 !important;
   margin: auto;
+  .HeaderSearch{
+    display: inline-flex;
+    .SearchInput{
+      margin-right: 20px;
+      input{
+        width: 0;
+
+      }
+      input:focus{
+        width: 200px;
+
+      }
+    }
+    a{
+      color: black!important;
+    }
+  }
 
   .PageHeader {
     display: flex;
@@ -54,7 +72,6 @@ h3 {
     padding: 0;
 
     .Img1 {
-      background: url("") no-repeat;
     }
   }
 }
@@ -69,19 +86,23 @@ h3 {
 
 .SearchField {
   display: flex;
+  flex-wrap: wrap;
   margin: auto;
   justify-content: space-around;
 }
+.Cascader{
+  background: red;
+  .ant-cascader-menu{
+    background: #007bff!important;
+  }
 
+}
 //Menu Personal Area
-.container-fluid{
   .MenuPA {
     display: flex;
     justify-content: space-around;
     margin: 30px 0;
-    background: aquamarine;
   }
-}
 //Scroll
 h2 {
   color: white;
@@ -92,6 +113,33 @@ h2 {
   padding: 24px;
   display: flex;
 }
+//DetailCard
+.DetailCard{
+  width: auto;
+  .ButtonsEvent{
+    justify-content: space-evenly!important;
+  }
+  .CardImage{
+    width: 60%;
+    margin: 20px auto;
+  }
+
+}
+.InfoAboutEvent {
+  height: 100px;
+  overflow: scroll!important;
+}
+
+
+a{
+  cursor: pointer;
+}
+.CardImage{
+  width: 100%;
+}
+.Warning{
+  font-size: 13px;
+}
 //Кнопки в CardEvent
 .ButtonsWrap{
   display: flex;
@@ -101,4 +149,11 @@ h2 {
     justify-content: space-around;
     margin-bottom: 20px;
   }
+}
+//Footer
+.Footer{
+  background: silver;
+  height: 200px;
+  text-align: center;
+  color: white;
 }

@@ -1,20 +1,24 @@
 import React from "react";
 import {Breadcrumb} from "antd";
-import {withRouter} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 
 class BreadCrumb extends React.Component {
+    state = {
+        current: this.props.current,
+    };
+    handleClick = e => {
+        this.setState({
+            current: e.key,
+        });
+    };
     render() {
         return(
-            <Breadcrumb>
-                <Breadcrumb.Item>
-                    <a onClick={() => {
-                        this.props.history.push(`/`)
-                    }}>Главная</a>
+            <Breadcrumb onClick={this.handleClick} selectedKeys={[this.state.current]}>
+                <Breadcrumb.Item key='mainPage'>
+                    <Link to={`/`}>Главная</Link>
                 </Breadcrumb.Item>
-                <Breadcrumb.Item>
-                    <a onClick={() => {
-                        this.props.history.push(`/map`)
-                    }}>На карте</a>
+                <Breadcrumb.Item key='onMap'>
+                    <Link to={`/map`}>На карте</Link>
                 </Breadcrumb.Item>
             </Breadcrumb>
             )
