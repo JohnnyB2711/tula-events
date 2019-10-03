@@ -16,7 +16,7 @@ class UserEvents extends React.Component{
     render() {
         return(
             <div className='container-fluid'>
-                <MenuOrg mode='horizontal' current=/>
+                <MenuOrg mode='horizontal' current={this.props.current}/>
                 <h3>{this.state.planned === true ? 'Запланированные' : 'Прошедшие'}</h3>
                 <Checkbox onChange={(e)=>{this.onChange(e)}}>Прошедшие</Checkbox>
 

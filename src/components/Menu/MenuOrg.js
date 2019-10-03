@@ -20,7 +20,7 @@ class MenuOrg extends React.Component {
     render() {
         return (
             <Menu className='MenuPA' onClick={this.handleClick} selectedKeys={[this.state.current]} mode={this.props.mode}>
-                <Menu.Item key="plannedEvents" onClick={()=>{this.props.history.push(`/events/:${this.state.current}`)}}>
+                <Menu.Item key="plannedEvents" onClick={(e)=>{this.props.history.push(`/events/:${e.key}`)}}>
                     <Icon type="clock-circle"/>
                     Мероприятия
                 </Menu.Item>
