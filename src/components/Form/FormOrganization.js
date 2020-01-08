@@ -1,5 +1,5 @@
 import React from "react";
-import {Form, Input, Checkbox, Button} from 'antd';
+import {Form, Input, Checkbox, Button, Row, Col} from 'antd';
 import UpLoadAvatar from "../UpLoadAvatar";
 
 class RegistrationForm extends React.Component {
@@ -65,11 +65,12 @@ class RegistrationForm extends React.Component {
             },
         };
         return (
-            <div className='WrapForm container col-12'>
-                <div className='Avatar'>
-                    <UpLoadAvatar/>
-                </div>
+            <Row>
+                <Col xs={12} md={8}>
                 <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+                    <Form.Item>
+                            <UpLoadAvatar/>
+                    </Form.Item>
                     <Form.Item label="Название организации">
                         {getFieldDecorator('nameOrganization', {
                             rules: [{required: true, message: 'Please input your nickname!', whitespace: true}],
@@ -145,7 +146,8 @@ class RegistrationForm extends React.Component {
                         </Button>
                     </Form.Item>
                 </Form>
-            </div>
+                </Col>
+            </Row>
         );
     }
 }

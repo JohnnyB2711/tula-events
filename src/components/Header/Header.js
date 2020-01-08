@@ -50,7 +50,7 @@ class Header extends React.Component {
 
                 avatar={
                     <Link to={`/`}>
-                        <div>g</div>
+                        {{ src: 'https://avatars1.githubusercontent.com/u/8186664?s=460&v=4' }}
                     </Link>}
                     breadcrumb={{routes}}
                 >

@@ -1,5 +1,5 @@
 //RegistrationForms
-h3 {
+.Title{
   font-size: 24px;
   text-align: center !important;
 }
@@ -84,19 +84,6 @@ h3 {
   margin: auto;
 }
 
-.SearchField {
-  display: flex;
-  flex-wrap: wrap;
-  margin: auto;
-  justify-content: space-around;
-}
-.Cascader{
-  background: red;
-  .ant-cascader-menu{
-    background: #007bff!important;
-  }
-
-}
 //Menu Personal Area
   .MenuPA {
     display: flex;
@@ -154,6 +141,5 @@ a{
 .Footer{
   background: silver;
   height: 200px;
-  text-align: center;
   color: white;
 }

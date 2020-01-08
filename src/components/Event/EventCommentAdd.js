@@ -26,7 +26,7 @@ const Editor = ({ onChange, onSubmit, submitting, value }) => (
     </div>
 );
 
-class AddComment extends React.Component {
+class EventCommentAdd extends React.Component {
     state = {
         comments: [],
         submitting: false,
@@ -68,7 +68,7 @@ class AddComment extends React.Component {
     render() {
         const { comments, submitting, value } = this.state;
         return (
-            this.props.mainPage === true ? null :
+            !this.props.pastPage ? null :
                 this.props.user === 'user' ?
                 (
             <div>
@@ -93,4 +93,4 @@ class AddComment extends React.Component {
         );
     }
 }
-export default AddComment
+export default EventCommentAdd

@@ -1,5 +1,5 @@
 import React from "react";
-import {Form, Input, Checkbox, Button, DatePicker, Radio} from 'antd';
+import {Form, Input, Checkbox, Button, DatePicker, Radio, Row, Col} from 'antd';
 import moment from "moment";
 import UpLoadAvatar from "../UpLoadAvatar";
 
@@ -80,11 +80,12 @@ class RegistrationForm extends React.Component {
         };
 
         return (
-            <div className='WrapForm container col-12'>
-                <div className='Avatar'>
-                    <UpLoadAvatar/>
-                </div>
+            <Row type="flex" justify="center" align="middle">
+                <Col xs={12} md={8}>
                 <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+                    <Form.Item>
+                        <UpLoadAvatar/>
+                    </Form.Item>
                     <Form.Item label="Имя">
                         {getFieldDecorator('name', {
                             rules: [{required: true, message: 'Please input your nickname!', whitespace: true}],
@@ -152,7 +153,7 @@ class RegistrationForm extends React.Component {
                             </Radio.Group>,
                         )}
                     </Form.Item>
-                    <Form.Item {...tailFormItemLayout}>
+                    <Form.Item>
                         {getFieldDecorator('agreement', {
                             valuePropName: 'checked',
                         })(
@@ -161,13 +162,14 @@ class RegistrationForm extends React.Component {
                             </Checkbox>,
                         )}
                     </Form.Item>
-                    <Form.Item {...tailFormItemLayout}>
+                    <Form.Item>
                         <Button type="primary" htmlType="submit" className='Button'>
                             Зарегистрироваться
                         </Button>
                     </Form.Item>
                 </Form>
-            </div>
+                </Col>
+            </Row>
         );
     }
 }

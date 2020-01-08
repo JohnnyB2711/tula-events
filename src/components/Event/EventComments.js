@@ -3,7 +3,7 @@ import {Comment, Icon, Tooltip, Avatar} from 'antd';
 import moment from 'moment';
 import {withRouter} from "react-router";
 
-class CommentsList extends React.Component {
+class EventComments extends React.Component {
     state = {
         likes: 0,
         dislikes: 0,
@@ -56,7 +56,7 @@ class CommentsList extends React.Component {
         return (
             <div className='container-fluid'>
                 {
-                    this.props.mainPage === false ?
+                    this.props.pastPage ?
                         (this.state.comments.map((comment) => {
                             return <Comment
                                 actions={actions}
@@ -87,7 +87,7 @@ class CommentsList extends React.Component {
                             <span>Отзывы будут доступны по завершению мероприятия</span>
                             {
                                 this.props.user === 'un' ? (<span>,чтобы оставить отзыв наобходимо <a className='Href' onClick={() => {
-                                this.props.history.push(`/enter`)
+                                this.props.history.push(`/authorization`)
                             }}>авторизироваться</a></span> ): null
                             }
                         </div>
@@ -97,4 +97,4 @@ class CommentsList extends React.Component {
     }
 }
 
-export default withRouter(CommentsList)
+export default withRouter(EventComments)

@@ -8,7 +8,7 @@ import MenuOrg from "../Menu/MenuOrg";
 class MenuAvatar extends React.Component {
     render() {
         return (
-            <Dropdown overlay={ this.props.user === 'org' ? <MenuUser mode='vertical'/> : <MenuOrg mode='vertical'/>}>
+            <Dropdown onClick={ this.props.user === 'org' ? <MenuUser mode='vertical'/> : <MenuOrg mode='vertical'/>}>
                 <Avatar size={50} icon="user"/>
             </Dropdown>
         );

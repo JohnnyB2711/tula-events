@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { DatePicker } from 'antd';
+import {DatePicker} from 'antd';
 
 const {RangePicker } = DatePicker;
 
@@ -35,7 +35,6 @@ class ChoiceTimeInterval extends React.Component {
     render() {
         return (
                 <RangePicker
-                    className='InputSearch Input'
                     disabledDate={disabledDate}
                     disabledTime={disabledRangeTime}
                     showTime={{

@@ -1,6 +1,6 @@
 import React from "react";
 import {Checkbox, Collapse} from "antd";
-import TabCard from "./CardEvent/TabCard";
+import TabCard from "./Event/EventCard";
 import MenuOrg from "./Menu/MenuOrg";
 import MenuUser from "./Menu/MenuUser";
 

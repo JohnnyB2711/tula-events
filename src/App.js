@@ -1,46 +1,45 @@
 import React from 'react';
 import './App.scss';
 import './Adaptive.scss'
+import './Ant.scss'
 import 'bootstrap/dist/css/bootstrap.css'
-import Registration from "./pages/Registration";
+import Registration from "./pages/auth/Registration";
 import './components/Components.scss'
 import 'antd/dist/antd.css'
 import {Route, Switch} from 'react-router-dom'
 import NewPassword from "./pages/NewPassword";
 import PasswordRecovery from "./pages/PasswordRecovery";
-import Enter from "./pages/Enter";
+import Enter from "./pages/auth/Authorization";
 import Header from "./components/Header/Header";
 import MainPage from "./pages/MainPage";
 import EventsOnMap from "./pages/EventsOnMap";
 import PersonalPage from "./pages/PersonalPage";
 import UserEvents from "./components/UserEvents";
 import SettingsUserInfo from "./pages/SettingsUserInfo";
-import CreateEvent from "./components/CreateEvent";
-import DetailCard from "./components/CardEvent/DetailCard";
+import EventCreate from "./components/Event/EventCreate";
+import DetailCard from "./components/Event/EventCardDetailed";
 import Footer from "./components/Footer/Footer";
 
 function App() {
     return (
         <div className="Body container-fluid">
             <Header user={'user'}/>
-            <Route path='/personal_page' render={(props)=><PersonalPage user='org' {...props}/>}/>
-            <Route exact path='/' render={(props)=><MainPage user='org' {...props}/>}/>
+            <Route path='/user/:id' render={(props) => <PersonalPage user='org' {...props}/>}/>
+            <Route exact path='/' render={(props) => <MainPage user='org' {...props}/>}/>
             <Switch>
 
                 <Route path='/map' component={EventsOnMap}/>
-                <Route path='/event/:info' render={(props)=><DetailCard user='org' mainPage={false} {...props}/>}/>
+                <Route path='/event/:id' render={(props) => <DetailCard user='org' pastPage={true} {...props}/>}/>
 
-                <Route path='/personal_page/events/:current' component={UserEvents}/>
-                <Route path='/personal_page/settings/:current' component={SettingsUserInfo}/>
-                <Route path='/personal_page/create_event/:current' component={CreateEvent}/>
+                <Route path='/user/:id/events' component={UserEvents}/>
+                <Route path='/user/:id/settings' component={SettingsUserInfo}/>
+                <Route path='/user/:id/event-create' component={EventCreate}/>
 
-                <Route path='/about_event' component={DetailCard}/>
+{/*                <Route path='/event/:id' component={DetailCard}/>*/}
                 <Route path='/registration' component={Registration}/>
-                <Route path='/enter' component={Enter}/>
-                <Route path='/newpassword' component={NewPassword}/>
-                <Route path='/passwordrecovery' component={PasswordRecovery}/>
-
-
+                <Route path='/authorization' component={Enter}/>
+                <Route path='/user/:id/new-password' component={NewPassword}/>
+                <Route path='/recovery-password' component={PasswordRecovery}/>
             </Switch>
             <Footer/>
         </div>

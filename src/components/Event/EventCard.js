@@ -1,18 +1,18 @@
 import React from 'react';
 import {Card} from 'antd';
-import ButtonEvent from "./ButtonsEvent";
+import Buttons from "./EventActions";
 import {withRouter} from "react-router";
 import {Link} from 'react-router-dom'
 
 const {Meta} = Card;
 
-class TabCard extends React.Component {
+class EventCard extends React.Component {
     state = {};
 
     render() {
         return (
             <Card
-                style={{width: 300}}
+                style={{width: "100%"}}
                 cover={
                     <Link to={`/event/${this.props.info}`}>
                         <img
@@ -21,7 +21,7 @@ class TabCard extends React.Component {
                             src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
                         /></Link>
                 }
-                actions={this.props.user === 'org' ? null : [<ButtonEvent user={this.props.user}/>]}
+                actions={this.props.user === 'org' ? null : [<Buttons user={this.props.user}/>]}
             >
                 <Link to={`/event/${this.props.info}`}><Meta
                     title="Название"
@@ -32,4 +32,4 @@ class TabCard extends React.Component {
     }
 }
 
-export default withRouter(TabCard)
+export default withRouter(EventCard)

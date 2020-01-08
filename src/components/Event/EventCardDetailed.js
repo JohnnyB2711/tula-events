@@ -1,12 +1,12 @@
 import React from "react";
 import {withRouter} from "react-router";
 import {Card} from "antd";
-import Description from "./Description";
-import CommentsList from "./CommentsList";
-import AddComment from "./AddComment";
-import ButtonEvent from "./ButtonsEvent";
+import EventDescription from "./EventDescription";
+import CommentsList from "./EventComments";
+import CommentAdd from "./EventCommentAdd";
+import Buttons from "./EventActions";
 
-class DetailCard extends React.Component {
+class EventCardDetailed extends React.Component {
     state = {
         key: 'tab1',
         noTitleKey: 'app',
@@ -25,7 +25,7 @@ class DetailCard extends React.Component {
 
     componentDidMount() {
 
-        if (this.props.mainPage === false && this.props.user === 'org') this.addMenuItem()
+        if (this.props.pastPage && this.props.user === 'org') this.addMenuItem()
     }
 
     onTabChange = (key, type) => {
@@ -35,18 +35,15 @@ class DetailCard extends React.Component {
         switch (prop) {
             //Описание
             case 'tab1':
-                return <Description/>;
+                return <EventDescription user={this.props.user}/>;
             //Комментарии
             case 'tab2':
                 return <div className='container-fluid'>
-                    <CommentsList mainPage={this.props.mainPage} user={this.props.user}/>
-                    <AddComment mainPage={this.props.mainPage} user={this.props.user}/>
+                    <CommentsList pastPage={this.props.pastPage}  user={this.props.user}/>
+                    <CommentAdd pastPage={this.props.pastPage} user={this.props.user}/>
                 </div>;
             //Статистика
             case 'tab3':
-                return;
-            //Редактировать
-            case 'tab4':
                 return;
         }
     };
@@ -55,8 +52,7 @@ class DetailCard extends React.Component {
             tabList: [...this.state.tabList, {
                 key: 'tab3',
                 tab: 'Статистика',
-            },{key: 'tab4',
-                tab: 'Редактировать'}]
+            }]
         })
     };
 
@@ -72,7 +68,7 @@ class DetailCard extends React.Component {
                             src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
                         />) : null
                     }
-                    actions={this.state.key === 'tab1' ? ( this.props.user === 'org' ? null : [<ButtonEvent user={this.props.user}/>] ): null}
+                    actions={this.state.key === 'tab1' ? ( this.props.user === 'org' ? null : [<Buttons user={this.props.user} pastPage={this.props.pastPage}/>]): null}
                     description="Время и место"
                     tabList={this.state.tabList}
                     activeTabKey={this.state.key}
@@ -87,4 +83,4 @@ class DetailCard extends React.Component {
     }
 }
 
-export default withRouter(DetailCard);
+export default withRouter(EventCardDetailed);

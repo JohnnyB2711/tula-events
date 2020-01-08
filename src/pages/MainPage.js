@@ -1,7 +1,7 @@
 import React from "react";
 import Scroll from '../components/Header/Scroll'
-import SearchEvent from '../components/Filter/SearchEvent'
-import TabCard from "../components/CardEvent/TabCard";
+import FilterEvents from '../components/Filter/FilterEvents'
+import CardsList from "../components/CardsList";
 
 class MainPage extends React.Component {
     state = {
@@ -10,19 +10,10 @@ class MainPage extends React.Component {
     render() {
         return (
             <section>
-                <div className="MainPage container-fluid">
+                <div className="container-fluid">
                     <Scroll/>
-                    <SearchEvent/>
-                    <div className='row'>
-                        {
-                            this.state.mas.map((i) => {
-                                return <div key={this.state.mas[i]} className='col-md-4 EventCardList'>
-                                    <TabCard mainPage={true} user={this.props.user} info={i}/>
-                                </div>
-                            })
-                        }
-                    </div>
-
+                    <FilterEvents/>
+                    <CardsList cards={this.state.mas}/>
                 </div>
             </section>
         )

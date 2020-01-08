@@ -33,7 +33,7 @@ class LoginForm extends React.Component {
                     <Form.Item>
                         <div className='Enter'>
                             <Button type="primary" htmlType="submit" className="login-form-button" onClick={() => {
-                                this.props.history.push(`/newpassword`)
+                                this.props.history.push(`/user/:id/new-password`)
                             }}>
                                 Сбросить пароль
                             </Button>
@@ -41,7 +41,7 @@ class LoginForm extends React.Component {
                                 <div className='InLineBlock'>
                                     <span className='Question'>Уже есть аккаунт?</span>
                                     <a onClick={() => {
-                                        this.props.history.push(`/enter`)
+                                        this.props.history.push(`/authorization`)
                                     }}>Войти</a>
                                 </div>
                                 <div className='InLineBlock'>
