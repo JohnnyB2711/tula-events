@@ -1,11 +1,12 @@
 import React from "react";
 import Scroll from '../components/Header/Scroll'
 import FilterEvents from '../components/Filter/FilterEvents'
-import CardsList from "../components/CardsList";
+import EventssList from "../components/EventssList";
 
 class MainPage extends React.Component {
     state = {
-        mas: ["1", "2", "3", "1", "2", "3"]
+        mas: ["1", "2", "3", "1", "2", "3"],
+        user:"user"
     };
     render() {
         return (
@@ -13,7 +14,7 @@ class MainPage extends React.Component {
                 <div className="container-fluid">
                     <Scroll/>
                     <FilterEvents/>
-                    <CardsList cards={this.state.mas}/>
+                    <EventssList cards={this.state.mas} user={this.state.user}/>
                 </div>
             </section>
         )

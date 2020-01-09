@@ -19,7 +19,7 @@ import SettingsUserInfo from "./pages/SettingsUserInfo";
 import EventCreate from "./components/Event/EventCreate";
 import DetailCard from "./components/Event/EventCardDetailed";
 import Footer from "./components/Footer/Footer";
-
+import { Link } from 'react-router-dom';
 function App() {
     return (
         <div className="Body container-fluid">

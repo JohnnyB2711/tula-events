@@ -1,9 +1,8 @@
 import React from "react";
-import {Form, Input, Checkbox, Button, DatePicker, Radio, Row, Col} from 'antd';
 import moment from "moment";
 import UpLoadAvatar from "../UpLoadAvatar";
 
-class RegistrationForm extends React.Component {
+/*class RegistrationForm extends React.Component {
     state = {
         confirmDirty: false,
         autoCompleteResult: [],
@@ -63,7 +62,7 @@ class RegistrationForm extends React.Component {
                 sm: {span: 16},
             },
         };
-        const tailFormItemLayout = {
+/!*        const tailFormItemLayout = {
             wrapperCol: {
                 xs: {
                     span: 24,
@@ -74,7 +73,7 @@ class RegistrationForm extends React.Component {
                     offset: 8,
                 },
             },
-        };
+        };*!/
         const config = {
             rules: [{type: 'object', required: true, message: 'Please select time!'}],
         };
@@ -175,4 +174,136 @@ class RegistrationForm extends React.Component {
 }
 
 const FormUser = Form.create({name: 'register'})(RegistrationForm);
-export default FormUser
+export default FormUser*/
+import {
+    Form,
+    Input,
+    Checkbox,
+    Button,
+    DatePicker,
+    Radio
+} from 'antd';
+import {birthdate, confirmPassword, email, middleName, name, password, phone, surname} from "../../helpers/validations";
+
+class RegistrationForm extends React.Component {
+    state = {
+        confirmDirty: false
+    };
+
+    handleSubmit = e => {
+        e.preventDefault();
+        this.props.form.validateFieldsAndScroll((err, values) => {
+            if (!err) {
+                console.log('Received values of form: ', values);
+            }
+        });
+    };
+
+    handleConfirmBlur = e => {
+        const {value} = e.target;
+        this.setState({confirmDirty: this.state.confirmDirty || !!value});
+    };
+/*
+    compareToFirstPassword = (rule, value, callback) => {
+        const {form} = this.props;
+        if (value && value !== form.getFieldValue('password')) {
+            callback('Two passwords that you enter is inconsistent!');
+        } else {
+            callback();
+        }
+    };*/
+
+/*    validateToNextPassword = (rule, value, callback) => {
+        const {form} = this.props;
+        if (value && this.state.confirmDirty) {
+            form.validateFields(['confirm'], {force: true});
+        }
+        callback();
+    };*/
+
+    render() {
+        const {getFieldDecorator} = this.props.form;
+
+        const formItemLayout = {
+            labelCol: {
+                xs: {span: 24},
+                sm: {span: 8},
+            },
+            wrapperCol: {
+                xs: {span: 24},
+                sm: {span: 16},
+            },
+        };
+        const tailFormItemLayout = {
+            wrapperCol: {
+                xs: {
+                    span: 24,
+                    offset: 0,
+                },
+                sm: {
+                    span: 16,
+                    offset: 8,
+                },
+            },
+        };
+        return (
+            <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+                <Form.Item>
+                    <UpLoadAvatar/>
+                </Form.Item>
+                <Form.Item label="Имя">
+                    {getFieldDecorator('name', name)(<Input/>)}
+                </Form.Item>
+                <Form.Item label="Фамилия">
+                    {getFieldDecorator('surname', surname)(<Input/>)}
+                </Form.Item>
+                <Form.Item label="Отчество">
+                    {getFieldDecorator('middleName', middleName)(<Input/>)}
+                </Form.Item>
+                <Form.Item label="E-mail">
+                    {getFieldDecorator('email', email)(<Input/>)}
+                </Form.Item>
+                <Form.Item label="Password" hasFeedback>
+                    {getFieldDecorator('password', password)(<Input.Password/>)}
+                </Form.Item>
+                <Form.Item label="Confirm Password" hasFeedback>
+                    {getFieldDecorator('confirmPassword',confirmPassword
+                    )(<Input.Password onBlur={this.handleConfirmBlur}/>)}
+                </Form.Item>
+                <Form.Item label="Phone Number">
+                    {getFieldDecorator('phone', phone)(<Input style={{width: '100%'}}/>)}
+                </Form.Item>
+                <Form.Item label="Дата рождения">
+                    {getFieldDecorator('date-picker', birthdate)(
+                        <DatePicker className='Input'
+                                    defaultPickerValue={moment("1990-11-27", "YYYY-MM-DD")}/>)}
+                </Form.Item>
+                <Form.Item label="Пол">
+                    {getFieldDecorator('radio-group')(
+                        <Radio.Group>
+                            <Radio value="a">Мужской</Radio>
+                            <Radio value="b">Женский</Radio>
+                        </Radio.Group>,
+                    )}
+                </Form.Item>
+                <Form.Item {...tailFormItemLayout}>
+                    {getFieldDecorator('agreement', {
+                        valuePropName: 'checked',
+                    })(
+                        <Checkbox>
+                            I have read the <a href="">agreement</a>
+                        </Checkbox>,
+                    )}
+                </Form.Item>
+                <Form.Item {...tailFormItemLayout}>
+                    <Button type="primary" htmlType="submit">
+                        Register
+                    </Button>
+                </Form.Item>
+            </Form>
+        );
+    }
+}
+
+const WrappedRegistrationForm = Form.create({name: 'register'})(RegistrationForm);
+export default WrappedRegistrationForm

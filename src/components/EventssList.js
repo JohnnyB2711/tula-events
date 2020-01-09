@@ -1,7 +1,7 @@
 import React from "react";
 import EventCard from "./Event/EventCard";
 
-class CardsList extends React.Component {
+class EventssList extends React.Component {
 
     render() {
         return (
@@ -17,4 +17,4 @@ class CardsList extends React.Component {
         )
     }
 }
-export default CardsList
+export default EventssList

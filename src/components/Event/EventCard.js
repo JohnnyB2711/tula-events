@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card} from 'antd';
-import Buttons from "./EventActions";
+import CardFooter from "./EventCardFooter";
 import {withRouter} from "react-router";
 import {Link} from 'react-router-dom'
 
@@ -12,21 +12,20 @@ class EventCard extends React.Component {
     render() {
         return (
             <Card
-                style={{width: "100%"}}
+                extra={<Link class="Href" to={`/event/${this.props.info}`}>Подробнее</Link>}
                 cover={
-                    <Link to={`/event/${this.props.info}`}>
-                        <img
-                            className='CardImage'
-                            alt="example"
-                            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                        /></Link>
+                    <img
+                        className='CardImage'
+                        alt="example"
+                        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                    />
                 }
-                actions={this.props.user === 'org' ? null : [<Buttons user={this.props.user}/>]}
             >
-                <Link to={`/event/${this.props.info}`}><Meta
+                <Meta
                     title="Название"
                     description="Время и место"
-                /></Link>
+                />
+                {this.props.user === 'org' ? null : [<CardFooter user={this.props.user}/>]}
             </Card>
         );
     }

@@ -128,13 +128,14 @@ a{
   font-size: 13px;
 }
 //Кнопки в CardEvent
-.ButtonsWrap{
-  display: flex;
-  flex-direction: column;
-  .ButtonsEvent{
+.CardFooter{
+  .FooterButton{
     display: flex;
     justify-content: space-around;
-    margin-bottom: 20px;
+    margin: 20px 0;
+  }
+  .FooterText{
+    text-align: center;
   }
 }
 //Footer

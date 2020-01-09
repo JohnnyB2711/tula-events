@@ -1,8 +1,16 @@
 import React from "react";
 import {Form, Icon, Input, Button, Checkbox, Row, Col} from 'antd';
 import {withRouter} from "react-router";
-
+import {Link} from 'react-router-dom'
+import {email, password} from "../../helpers/validations";
 class LoginForm extends React.Component {
+    state = {
+        form: {
+            email: "",
+            password: "",
+            remember: false
+        }
+    };
     handleSubmit = e => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
@@ -11,45 +19,44 @@ class LoginForm extends React.Component {
             }
         });
     };
-    Enter = (e) => {
-        e.preventDefault();
-        this.props.history.push(`/personal_page/planned_events`)
+    test = () => {
+        console.log(this.state)
+    };
+    onChange = ({target}) => {
+        const {value, name} = target;
+        this.setState(prevState => ({
+            form: {
+                ...prevState.form,
+                [name]: value
+            }
+        }));
     };
 
     render() {
+        console.log(this.props.form);
         const {getFieldDecorator} = this.props.form;
-        const formItemLayout = {
-            labelCol: {
-                md: {span: 24},
-                sm: {span: 24},
-            },
-            wrapperCol: {
-                md: {span: 24},
-                sm: {span: 24},
-            },
-        };
         return (
             <Row type="flex" align="middle" justify="center">
                 <Col xs={12} md={8}>
                     <Form onSubmit={this.handleSubmit}>
                         <Form.Item>
-                            {getFieldDecorator('username', {
-                                rules: [{required: true, message: 'Введите свое имя!'}],
-                            })(
+                            {getFieldDecorator('email', email)(
                                 <Input
                                     prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                                    placeholder="Логин"
+                                    placeholder="E-mail"
+/*                                    name="email"
+                                    onChange={this.onChange}*/
                                 />,
                             )}
                         </Form.Item>
                         <Form.Item>
-                            {getFieldDecorator('password', {
-                                rules: [{required: true, message: 'Введите пароль!'}],
-                            })(
+                            {getFieldDecorator('password', password)(
                                 <Input
                                     prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
                                     type="password"
                                     placeholder="Пароль"
+/*                                    name="password"
+                                    onChange={this.onChange}*/
                                 />,
                             )}
                         </Form.Item>
@@ -62,22 +69,18 @@ class LoginForm extends React.Component {
 
                                 <Button
                                     type="primary"
-                                    htmlType="submit"
-                                    onClick={(e) => {
-                                        this.Enter(e)
-                                    }}>
+                                    htmlType="submit">
                                     Войти
                                 </Button>
-                                <a className="Href" onClick={() => {
-                                    this.props.history.push(`/registration`)
-                                }}>
-                                    Зарегистрировать
-                                </a>
-                                <a className="Href" onClick={() => {
-                                    this.props.history.push(`/recovery-password`)
-                                }}>
+                                <Button onClick={this.test}>
+                                    Тест
+                                </Button>
+                                <Link className="Href" to={"/registration"}>
+                                    Зарегистрироваться
+                                </Link>
+                                <Link className="Href" to={"/recovery-password"}>
                                     Забыли пароль?
-                                </a>
+                                </Link>
                             </div>
                         </Form.Item>
                     </Form>

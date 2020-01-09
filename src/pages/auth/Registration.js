@@ -20,6 +20,5 @@ export default function Registration() {
                 </div>
             </TabPane>
         </Tabs>
-
     )
 }

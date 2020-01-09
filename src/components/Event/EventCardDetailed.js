@@ -4,7 +4,7 @@ import {Card} from "antd";
 import EventDescription from "./EventDescription";
 import CommentsList from "./EventComments";
 import CommentAdd from "./EventCommentAdd";
-import Buttons from "./EventActions";
+import Buttons from "./EventCardFooter";
 
 class EventCardDetailed extends React.Component {
     state = {

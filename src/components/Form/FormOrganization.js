@@ -1,6 +1,7 @@
 import React from "react";
 import {Form, Input, Checkbox, Button, Row, Col} from 'antd';
 import UpLoadAvatar from "../UpLoadAvatar";
+import {confirmPassword, email, name, nameOrganization, password, phone, surname} from "../../helpers/validations";
 
 class RegistrationForm extends React.Component {
     state = {
@@ -20,15 +21,6 @@ class RegistrationForm extends React.Component {
     handleConfirmBlur = e => {
         const {value} = e.target;
         this.setState({confirmDirty: this.state.confirmDirty || !!value});
-    };
-
-    compareToFirstPassword = (rule, value, callback) => {
-        const {form} = this.props;
-        if (value && value !== form.getFieldValue('password')) {
-            callback('Two passwords that you enter is inconsistent!');
-        } else {
-            callback();
-        }
     };
 
     validateToNextPassword = (rule, value, callback) => {
@@ -72,64 +64,25 @@ class RegistrationForm extends React.Component {
                             <UpLoadAvatar/>
                     </Form.Item>
                     <Form.Item label="Название организации">
-                        {getFieldDecorator('nameOrganization', {
-                            rules: [{required: true, message: 'Please input your nickname!', whitespace: true}],
-                        })(<Input className='Input'/>)}
+                        {getFieldDecorator('nameOrganization', nameOrganization)(<Input className='Input'/>)}
                     </Form.Item>
                     <Form.Item label="Имя">
-                        {getFieldDecorator('name', {
-                            rules: [{required: true, message: 'Please input your nickname!', whitespace: true}],
-                        })(<Input className='Input'/>)}
+                        {getFieldDecorator('name', name)(<Input className='Input'/>)}
                     </Form.Item>
                     <Form.Item label="Фамилия">
-                        {getFieldDecorator('surname', {
-                            rules: [{required: true, message: 'Please input your nickname!', whitespace: true}],
-                        })(<Input className='Input'/>)}
+                        {getFieldDecorator('surname',surname)(<Input className='Input'/>)}
                     </Form.Item>
                     <Form.Item label="Почта">
-                        {getFieldDecorator('email', {
-                            rules: [
-                                {
-                                    type: 'email',
-                                    message: 'The input is not valid E-mail!',
-                                },
-                                {
-                                    required: true,
-                                    message: 'Please input your E-mail!',
-                                },
-                            ],
-                        })(<Input className='Input'/>)}
+                        {getFieldDecorator('email', email)(<Input className='Input'/>)}
                     </Form.Item>
                     <Form.Item label="Пароль" hasFeedback>
-                        {getFieldDecorator('password', {
-                            rules: [
-                                {
-                                    required: true,
-                                    message: 'Please input your password!',
-                                },
-                                {
-                                    validator: this.validateToNextPassword,
-                                },
-                            ],
-                        })(<Input.Password className='Input'/>)}
+                        {getFieldDecorator('password', password)(<Input.Password className='Input'/>)}
                     </Form.Item>
                     <Form.Item label="Повторный пароль" hasFeedback>
-                        {getFieldDecorator('confirm', {
-                            rules: [
-                                {
-                                    required: true,
-                                    message: 'Please confirm your password!',
-                                },
-                                {
-                                    validator: this.compareToFirstPassword,
-                                },
-                            ],
-                        })(<Input.Password onBlur={this.handleConfirmBlur} className='Input'/>)}
+                        {getFieldDecorator('confirm', confirmPassword)(<Input.Password className='Input'/>)}
                     </Form.Item>
                     <Form.Item label="Телефон">
-                        {getFieldDecorator('phone', {
-                            rules: [{required: true, message: 'Please input your phone number!'}],
-                        })(<Input className='Input'/>)}
+                        {getFieldDecorator('phone', phone)(<Input className='Input'/>)}
                     </Form.Item>
                     <Form.Item {...tailFormItemLayout}>
                         {getFieldDecorator('agreement', {
