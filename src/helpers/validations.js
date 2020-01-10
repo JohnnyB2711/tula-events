@@ -1,57 +1,42 @@
 export const birthdate = {
-    rules: [{type: 'object', required: true, message: 'Выберите дату рождения!'}],
+    rules: [{required: true, message: 'Выберите дату рождения'}],
 };
 export const name = {
-    rules: [{type: 'object', required: true, message: 'Введите имя!'}],
+    rules: [{required: true, message: 'Введите имя'}],
 };
 export const surname = {
-    rules: [{type: 'object', required: true, message: 'Введите фамилию!'}],
+    rules: [{required: true, message: 'Введите фамилию'}],
 };
 export const middleName = {
-    rules: [{type: 'object', required: true, message: 'Введите отчество!'}],
+    rules: [{required: true, message: 'Введите отчество'}],
 };
 export const phone = {
-    rules: [{type: 'object', required: true, message: 'Введите номер телефона!'}],
+    rules: [{required: true, message: 'Введите номер телефона'}],
 };
 export const email = {
-    rules: [{
-        type: 'email',
-        message: 'Не валидный E-mail!',
-    },
-        {
-            required: true,
-            message: 'Введите E-mail!',
-        }],
+    rules: [{type: 'email', message: 'Не валидный E-mail',}, {required: true, message: 'Введите E-mail',}],
 };
 export const password = {
-    rules: [
-        {
-            required: true,
-            message: 'Введите пароль!',
-        },
-      /*  {
-            validator: this.validateToNextPassword,
-        },*/
-    ],
+    rules: [{required: true, message: 'Введите пароль',}],
 };
 export const confirmPassword = {
-    rules: [
-        {
-            required: true,
-            message: 'Please confirm your password!',
-        },
-        {
-            validator: (rule, value, callback) => {
-                const {form} = this.props;
-                if (value && value !== form.getFieldValue('password')) {
-                    callback('Two passwords that you enter is inconsistent!');
-                } else {
-                    callback();
-                }
-            }
-        },
-    ],
+    rules: [{required: true, message: 'Подтвердите пароль',}]
 };
-export const nameOrganization={
-    rules: [{type: 'object', required: true, message: 'Введите имя организации!'}],
+export const nameOrganization = {
+    rules: [{required: true, message: 'Введите имя организации'}],
+};
+export const sex = {
+    rules: [{required: true, message: 'Выберите пол'}],
+};
+export const eventName = {
+    rules: [{required: true, message: 'Введите название мероприятия'}],
+};
+export const place = {
+    rules: [{required: true, message: 'Введите место проведения'}],
+};
+export const gerne = {
+    rules: [{required: true, message: 'Выберите жанр'}],
+};
+export const date = {
+    rules: [{required: true, message: 'Выберите дату и время проведени мероприятия'}],
 };

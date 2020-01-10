@@ -6,7 +6,7 @@ import EventssList from "../components/EventssList";
 class MainPage extends React.Component {
     state = {
         mas: ["1", "2", "3", "1", "2", "3"],
-        user:"user"
+        user:""
     };
     render() {
         return (

@@ -1,21 +1,25 @@
 import React from "react";
 import ChoiceTimeInterval from '../ChoiceTimeInterval'
-import {Form, Input, Button, Checkbox, Select, Row , Col} from 'antd';
+import {Form, Input, Button, Checkbox, Select, Row, Col ,DatePicker} from 'antd';
 import UpLoadAvatar from "../UpLoadAvatar";
-
+import {date, eventName, gerne, place} from "../../helpers/validations";
+const { RangePicker } = DatePicker;
 class NewEvent extends React.Component {
     state = {
         confirmDirty: false,
         autoCompleteResult: [],
         genres: [
             {
-                value: 'zhejiang',
-                label: 'Zhejiang'
+                value: 0,
+                label: 'Семейное'
+            },
+            {
+                value: 1,
+                label: 'Детское'
             },
         ]
 
     };
-
     handleSubmit = e => {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
@@ -27,7 +31,7 @@ class NewEvent extends React.Component {
 
     render() {
         const {TextArea} = Input;
-        const {Options} = Select;
+        const {Option} = Select;
         const {getFieldDecorator} = this.props.form;
         const formItemLayout = {
             labelCol: {span: 6},
@@ -41,69 +45,32 @@ class NewEvent extends React.Component {
                             <UpLoadAvatar/>
                         </Form.Item>
                         <Form.Item hasFeedback>
-                            {getFieldDecorator(`title`, {
-                                rules: [
-                                    {
-                                        required: true,
-                                        message: 'Введите название мероприятия',
-                                    },
-                                ],
-                            })(<Input className='Input' placeholder="Название"/>)}
+                            {getFieldDecorator(`eventName`, eventName)(<Input className='Input'
+                                                                              placeholder="Название"/>)}
                         </Form.Item>
                         <Form.Item hasFeedback>
-                            {getFieldDecorator(`place`, {
-                                rules: [
-                                    {
-                                        required: true,
-                                        message: 'Введите место проведения мероприятия',
-                                    },
-                                ],
-                            })(<Input className='Input' placeholder="Место"/>)}
+                            {getFieldDecorator(`place`, place)(<Input className='Input' placeholder="Место"/>)}
                         </Form.Item>
                         <Form.Item hasFeedback>
-                            {getFieldDecorator('select-multiple', {
-                                rules: [
-                                    {required: true, message: 'Выберите жанр(ы) мероприятия', type: 'array'},
-                                ],
-                            })(
+                            {getFieldDecorator('genre', gerne)(
                                 <Select mode="multiple" placeholder="Жанр мероприятия">
-                                    {/*   {
-                                this.state.genres.map((genre) => {
-                                    return <Options key={genre.value}>{genre.label}</Options>
-                                })
-                            }*/}
+                                    {
+                                        this.state.genres.map((genre) => {
+                                            return <Option key={genre.value}>{genre.label}</Option>
+                                        })
+                                    }
                                 </Select>,
                             )}
                         </Form.Item>
                         <Form.Item hasFeedback>
-                            {getFieldDecorator(`date`, {
-                                rules: [
-                                    {
-                                        required: true,
-                                        message: 'Выберите время проведения мероприятия',
-                                    },
-                                ],
-                            })(<ChoiceTimeInterval className='Input'/>)}
+                            {getFieldDecorator(`date`)(<RangePicker/>)}
                         </Form.Item>
                         <Form.Item>
-                            {getFieldDecorator(`about`, {
-                                rules: [
-                                    {
-                                        required: false,
-                                        message: 'Заполните поля для фильтра!',
-                                    },
-                                ],
-                            })(<TextArea className='Input' rows={4}/>)}
+                            {getFieldDecorator(`about`)(<TextArea className='Input' rows={4}/>)}
                         </Form.Item>
                         <Form.Item>
-                            {getFieldDecorator(`radioButton`, {
-                                rules: [
-                                    {
-                                        required: false,
-                                        message: 'Заполните поля для фильтра!',
-                                    },
-                                ],
-                            })(<Checkbox>Доступно только для авторизованных пользователей</Checkbox>)}
+                            {getFieldDecorator(`private`)(<Checkbox>Доступно только для авторизованных
+                                пользователей</Checkbox>)}
                         </Form.Item>
 
                         <Button type="primary" htmlType="submit" className='Button'>
@@ -112,8 +79,6 @@ class NewEvent extends React.Component {
                     </Form>
                 </Col>
             </Row>
-
-
         );
     }
 }

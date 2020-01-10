@@ -3,6 +3,7 @@ import {Form, Icon, Input, Button, Checkbox, Row, Col} from 'antd';
 import {withRouter} from "react-router";
 import {Link} from 'react-router-dom'
 import {email, password} from "../../helpers/validations";
+
 class LoginForm extends React.Component {
     state = {
         form: {
@@ -19,10 +20,7 @@ class LoginForm extends React.Component {
             }
         });
     };
-    test = () => {
-        console.log(this.state)
-    };
-    onChange = ({target}) => {
+   /* onChange = ({target}) => {
         const {value, name} = target;
         this.setState(prevState => ({
             form: {
@@ -30,7 +28,7 @@ class LoginForm extends React.Component {
                 [name]: value
             }
         }));
-    };
+    };*/
 
     render() {
         console.log(this.props.form);
@@ -44,8 +42,6 @@ class LoginForm extends React.Component {
                                 <Input
                                     prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
                                     placeholder="E-mail"
-/*                                    name="email"
-                                    onChange={this.onChange}*/
                                 />,
                             )}
                         </Form.Item>
@@ -55,31 +51,30 @@ class LoginForm extends React.Component {
                                     prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
                                     type="password"
                                     placeholder="Пароль"
-/*                                    name="password"
-                                    onChange={this.onChange}*/
                                 />,
                             )}
                         </Form.Item>
                         <Form.Item>
-                            <div className="d-flex flex-column align-items-center">
+                            <div className="d-flex justify-content-between">
                                 {getFieldDecorator('remember', {
                                     valuePropName: 'checked',
                                     initialValue: true,
                                 })(<Checkbox>Запомнить меня</Checkbox>)}
 
+                                <Link className="Href login-form-forgot" to={"/recovery-password"}>
+                                    Забыли пароль?
+                                </Link>
+                            </div>
+
+                            <div className="d-flex flex-column">
                                 <Button
+                                    className="login-form-button"
                                     type="primary"
                                     htmlType="submit">
                                     Войти
                                 </Button>
-                                <Button onClick={this.test}>
-                                    Тест
-                                </Button>
-                                <Link className="Href" to={"/registration"}>
+                                <Link className="Href text-center" to={"/registration"}>
                                     Зарегистрироваться
-                                </Link>
-                                <Link className="Href" to={"/recovery-password"}>
-                                    Забыли пароль?
                                 </Link>
                             </div>
                         </Form.Item>
